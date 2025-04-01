@@ -70,7 +70,13 @@ import { p as Pe } from "./pathLine2-dee41061.js";
 import { p as Oe } from "./pathLine4-99db6c46.js";
 import { L as Fe, a as Re } from "./Line2-7598ed88.js";
 import { a as qe } from "./three.interactive-c6512469.js";
-import { g as je, h as ke, o as ze, c as Ne, j as _e } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createStaticVNode,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const Qe =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAM0SURBVHgB7dYxDcIAFADRX1IprAhABiMqMMqIBwQ0Tbq1Qu49EZdbvr//OUDSbYAsAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYAwAYCw5fX+nAMkOQAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIW++P5wBNDgDCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADC1m0/BmhyABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABB2AdqPCws2qdvxAAAAAElFTkSuQmCC",
@@ -1223,7 +1229,7 @@ class Ke extends ue {
   }
 }
 const et = { class: "globe" },
-  tt = _e(
+  tt = createStaticVNode(
     '<canvas id="canvas"></canvas><div class="clouds-wrap"><div class="cloud"></div><div class="cloud"></div><div class="cloud"></div><div class="cloud"></div></div>',
     2
   ),
@@ -1233,13 +1239,13 @@ const et = { class: "globe" },
     setup(b) {
       let c = null;
       return (
-        je(() => {
+        onMounted(() => {
           c = new Ke(document.getElementById("canvas"));
         }),
-        ke(() => {
+        onBeforeUnmount(() => {
           c && c.destroy();
         }),
-        (e, t) => (ze(), Ne("div", et, at))
+        (e, t) => (openBlock(), createElementBlock("div", et, at))
       );
     },
   };

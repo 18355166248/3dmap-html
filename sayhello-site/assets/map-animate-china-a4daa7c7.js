@@ -75,13 +75,13 @@ import { L as at, a as it } from "./Line2-7598ed88.js";
 import { l as rt } from "./label-arrow-b5ffbd19.js";
 import { a as nt } from "./three.interactive-c6512469.js";
 import {
-  f as ot,
-  g as st,
-  h as lt,
-  o as ct,
-  c as dt,
-  b as N,
-  n as z,
+  reactive,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+  normalizeClass,
 } from "./index-main.js";
 class ut {
   constructor(e = null) {
@@ -2101,13 +2101,13 @@ class vt extends Re {
   }
 }
 const yt = { class: "map-fj" },
-  bt = N("canvas", { id: "canvas" }, null, -1),
+  bt = createElementVNode("canvas", { id: "canvas" }, null, -1),
   wt = { class: "map-btn-group" },
   Ht = {
     __name: "map-animate-china",
     setup(R) {
       let e = null;
-      const t = ot({
+      const t = reactive({
           bar: !0,
           flyLine: !1,
           scatter: !1,
@@ -2140,77 +2140,77 @@ const yt = { class: "map-fj" },
             a === "path" && (e.pathLineGroup.visible = t[a]);
         };
       return (
-        st(() => {
+        onMounted(() => {
           e = new vt(document.getElementById("canvas"), {
             geoProjectionCenter: [108.55, 34.32],
           });
         }),
-        lt(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
         (a, r) => (
-          ct(),
-          dt("div", yt, [
+          openBlock(),
+          createElementBlock("div", yt, [
             bt,
-            N("div", wt, [
-              N(
+            createElementVNode("div", wt, [
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.bar }]),
+                  class: normalizeClass(["btn", { active: t.bar }]),
                   onClick: r[0] || (r[0] = (n) => i("bar")),
                 },
                 " 柱状图 ",
                 2
               ),
-              N(
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.flyLine }]),
+                  class: normalizeClass(["btn", { active: t.flyLine }]),
                   onClick: r[1] || (r[1] = (n) => i("flyLine")),
                 },
                 " 飞线 ",
                 2
               ),
-              N(
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.scatter }]),
+                  class: normalizeClass(["btn", { active: t.scatter }]),
                   onClick: r[2] || (r[2] = (n) => i("scatter")),
                 },
                 " 散点图 ",
                 2
               ),
-              N(
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.card }]),
+                  class: normalizeClass(["btn", { active: t.card }]),
                   onClick: r[3] || (r[3] = (n) => i("card")),
                 },
                 " 标牌 ",
                 2
               ),
-              N(
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.particle }]),
+                  class: normalizeClass(["btn", { active: t.particle }]),
                   onClick: r[4] || (r[4] = (n) => i("particle")),
                 },
                 " 粒子特效 ",
                 2
               ),
-              N(
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.path }]),
+                  class: normalizeClass(["btn", { active: t.path }]),
                   onClick: r[5] || (r[5] = (n) => i("path")),
                 },
                 " 路径轨迹 ",
                 2
               ),
-              N(
+              createElementVNode(
                 "div",
                 {
-                  class: z(["btn", { active: t.mirror }]),
+                  class: normalizeClass(["btn", { active: t.mirror }]),
                   onClick: r[6] || (r[6] = (n) => i("mirror")),
                 },
                 " 倒影 ",

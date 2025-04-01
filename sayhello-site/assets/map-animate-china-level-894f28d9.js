@@ -85,13 +85,13 @@ import { l as ut } from "./label-arrow-b5ffbd19.js";
 import { a as ht } from "./three.interactive-c6512469.js";
 import { e as mt } from "./GC-b02a3dbf.js";
 import {
-  f as ft,
-  g as vt,
-  h as gt,
-  o as yt,
-  c as bt,
-  b as B,
-  n as R,
+  reactive,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+  normalizeClass,
 } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class xt {
@@ -2671,13 +2671,13 @@ class Nt extends Ae {
   }
 }
 const Ct = { class: "map-level" },
-  Tt = B("canvas", { id: "canvas" }, null, -1),
+  Tt = createElementVNode("canvas", { id: "canvas" }, null, -1),
   Bt = { class: "map-btn-group" },
   ra = {
     __name: "map-animate-china-level",
     setup(w) {
       let e = null;
-      const t = ft({
+      const t = reactive({
           bar: !0,
           flyLine: !1,
           scatter: !1,
@@ -2720,79 +2720,79 @@ const Ct = { class: "map-level" },
           e && e.goBack();
         };
       return (
-        vt(() => {
+        onMounted(() => {
           e = new Nt(document.getElementById("canvas"), {
             geoProjectionCenter: [108.55, 34.32],
             setEnable: i,
           });
         }),
-        gt(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
         (n, r) => (
-          yt(),
-          bt("div", Ct, [
+          openBlock(),
+          createElementBlock("div", Ct, [
             Tt,
-            B("div", { class: "return-btn", onClick: s }, "返回上一级"),
-            B("div", Bt, [
-              B(
+            createElementVNode("div", { class: "return-btn", onClick: s }, "返回上一级"),
+            createElementVNode("div", Bt, [
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.bar }]),
+                  class: normalizeClass(["btn", { active: t.bar }]),
                   onClick: r[0] || (r[0] = (l) => a("bar")),
                 },
                 " 柱状图 ",
                 2
               ),
-              B(
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.flyLine }]),
+                  class: normalizeClass(["btn", { active: t.flyLine }]),
                   onClick: r[1] || (r[1] = (l) => a("flyLine")),
                 },
                 " 飞线 ",
                 2
               ),
-              B(
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.scatter }]),
+                  class: normalizeClass(["btn", { active: t.scatter }]),
                   onClick: r[2] || (r[2] = (l) => a("scatter")),
                 },
                 " 散点图 ",
                 2
               ),
-              B(
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.card }]),
+                  class: normalizeClass(["btn", { active: t.card }]),
                   onClick: r[3] || (r[3] = (l) => a("card")),
                 },
                 " 标牌 ",
                 2
               ),
-              B(
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.particle }]),
+                  class: normalizeClass(["btn", { active: t.particle }]),
                   onClick: r[4] || (r[4] = (l) => a("particle")),
                 },
                 " 粒子特效 ",
                 2
               ),
-              B(
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.path }]),
+                  class: normalizeClass(["btn", { active: t.path }]),
                   onClick: r[5] || (r[5] = (l) => a("path")),
                 },
                 " 路径轨迹 ",
                 2
               ),
-              B(
+              createElementVNode(
                 "div",
                 {
-                  class: R(["btn", { active: t.mirror }]),
+                  class: normalizeClass(["btn", { active: t.mirror }]),
                   onClick: r[6] || (r[6] = (l) => a("mirror")),
                 },
                 " 倒影 ",

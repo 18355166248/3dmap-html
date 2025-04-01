@@ -77,13 +77,13 @@ import {
 } from "./index-5b3afbff.js";
 import { _ as et } from "./_plugin-vue_export-helper-c27b6911.js";
 import {
-  g as tt,
-  h as at,
-  o as st,
-  c as rt,
-  p as nt,
-  i as ot,
-  b as it,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  pushScopeId,
+  popScopeId,
+  createElementVNode,
 } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class lt {
@@ -1232,22 +1232,22 @@ class mt extends ve {
       document.body.removeChild(this.stats.dom);
   }
 }
-const gt = (h) => (nt("data-v-3ea74be0"), (h = h()), ot(), h),
+const gt = (h) => (pushScopeId("data-v-3ea74be0"), (h = h()), popScopeId(), h),
   yt = { class: "globe" },
-  bt = gt(() => it("canvas", { id: "canvas" }, null, -1)),
+  bt = gt(() => createElementVNode("canvas", { id: "canvas" }, null, -1)),
   wt = [bt],
   xt = {
     __name: "earth04",
     setup(h) {
       let e = null;
       return (
-        tt(() => {
+        onMounted(() => {
           e = new mt(document.getElementById("canvas"));
         }),
-        at(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (s, n) => (st(), rt("div", yt, wt))
+        (s, n) => (openBlock(), createElementBlock("div", yt, wt))
       );
     },
   },

@@ -29,7 +29,12 @@ import {
   d as k,
 } from "./negz-6d72d730.js";
 import { _ as A } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as F, h as N, o as O, c as I } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class D {
   constructor(e = {}) {
@@ -354,13 +359,13 @@ const q = { id: "canvas" },
     setup(c) {
       let e = null;
       return (
-        F(() => {
+        onMounted(() => {
           e = new Y(document.getElementById("canvas"));
         }),
-        N(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (s, o) => (O(), I("canvas", q))
+        (s, o) => (openBlock(), createElementBlock("canvas", q))
       );
     },
   },

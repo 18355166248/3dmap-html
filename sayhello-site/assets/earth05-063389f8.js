@@ -78,13 +78,13 @@ import {
 } from "./index-5b3afbff.js";
 import { _ as tt } from "./_plugin-vue_export-helper-c27b6911.js";
 import {
-  g as at,
-  h as st,
-  o as rt,
-  c as ot,
-  p as nt,
-  i as it,
-  b as lt,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  pushScopeId,
+  popScopeId,
+  createElementVNode,
 } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class ct {
@@ -1361,22 +1361,22 @@ class gt extends Se {
       document.body.removeChild(this.stats.dom);
   }
 }
-const yt = (p) => (nt("data-v-17353852"), (p = p()), it(), p),
+const yt = (p) => (pushScopeId("data-v-17353852"), (p = p()), popScopeId(), p),
   wt = { class: "globe" },
-  bt = yt(() => lt("canvas", { id: "canvas" }, null, -1)),
+  bt = yt(() => createElementVNode("canvas", { id: "canvas" }, null, -1)),
   xt = [bt],
   vt = {
     __name: "earth05",
     setup(p) {
       let e = null;
       return (
-        at(() => {
+        onMounted(() => {
           e = new gt(document.getElementById("canvas"));
         }),
-        st(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (r, o) => (rt(), ot("div", wt, xt))
+        (r, o) => (openBlock(), createElementBlock("div", wt, xt))
       );
     },
   },

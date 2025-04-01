@@ -111,7 +111,13 @@ import {
 import { L as St } from "./Label3d-1a598e21.js";
 import { G as K, P as Ae } from "./GradientShader-7cc661aa.js";
 import { L as Lt, a as Gt } from "./Line2-7598ed88.js";
-import { g as Qt, h as Rt, o as Pt, c as Tt, j as Ot } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createStaticVNode,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const zt =
     "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAMxSURBVHgB7dZBEYRAEMDA4YpCCB8eKEDK+heyJyTdIlI5rnvtAZJ+A2QJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAIQJAISdz/sN0OQAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIEwAIOy47rUHSHIAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAECYAEHY+7zdAkwOAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAMAGAsOO61x4gyQFAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABAmABA2Pm83wBNDgDCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADCBADC/hQeCCUWErUgAAAAAElFTkSuQmCC",
@@ -3013,7 +3019,7 @@ class ta extends qe {
   }
 }
 const aa = { class: "globe" },
-  ia = Ot(
+  ia = createStaticVNode(
     '<canvas id="canvas"></canvas><div class="clouds-wrap"><div class="cloud"></div><div class="cloud"></div><div class="cloud"></div><div class="cloud"></div></div>',
     2
   ),
@@ -3023,13 +3029,13 @@ const aa = { class: "globe" },
     setup(u) {
       let e = null;
       return (
-        Qt(() => {
+        onMounted(() => {
           e = new ta(document.getElementById("canvas"));
         }),
-        Rt(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (t, n) => (Pt(), Tt("div", aa, na))
+        (t, n) => (openBlock(), createElementBlock("div", aa, na))
       );
     },
   };

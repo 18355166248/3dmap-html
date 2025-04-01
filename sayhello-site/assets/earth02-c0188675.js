@@ -33,7 +33,12 @@ import {
 import { R as F } from "./RippleCirle-e198a9fe.js";
 import { s as j } from "./stats.module-077ce25d.js";
 import { _ as q } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as W, h as H, o as X, c as J } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./index-4db78ffb.js";
 const K = "/sayhello-site/assets/earth_atmos_2048-2faa400d.jpg",
@@ -245,13 +250,13 @@ const Z = { id: "canvas" },
     setup(w) {
       let e = null;
       return (
-        W(() => {
+        onMounted(() => {
           e = new Y(document.getElementById("canvas"));
         }),
-        H(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (a, n) => (X(), J("canvas", Z))
+        (a, n) => (openBlock(), createElementBlock("canvas", Z))
       );
     },
   },

@@ -22,7 +22,12 @@ import { M as E } from "./index-1453e2ee.js";
 import { D } from "./index-4ec0cc76.js";
 import { s as T } from "./stats.module-077ce25d.js";
 import { _ as k } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as G, h as z, o as B, c as R } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class F extends E {
   constructor(e) {
@@ -181,13 +186,13 @@ const H = { id: "canvas" },
     setup(u) {
       let e = null;
       return (
-        G(() => {
+        onMounted(() => {
           e = new F(document.getElementById("canvas"));
         }),
-        z(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (t, n) => (B(), R("canvas", H))
+        (t, n) => (openBlock(), createElementBlock("canvas", H))
       );
     },
   },

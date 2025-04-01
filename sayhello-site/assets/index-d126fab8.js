@@ -1,16 +1,16 @@
 import { _ as d } from "./_plugin-vue_export-helper-c27b6911.js";
 import {
-  r as i,
-  o as e,
-  c as t,
-  F as n,
-  a as s,
-  u as m,
-  b as x,
-  t as r,
-  d as f,
-  w as h,
-  e as k,
+  resolveComponent,
+  openBlock,
+  createElementBlock,
+  Fragment,
+  renderList,
+  unref,
+  createElementVNode,
+  toDisplayString,
+  createBlock,
+  withCtx,
+  createTextVNode,
 } from "./index-main.js";
 const v = { class: "home-list" },
   g = {
@@ -19,40 +19,54 @@ const v = { class: "home-list" },
       let l = localStorage.getItem("appRoute"),
         _ = JSON.parse(l);
       return (B, S) => {
-        const c = i("router-link");
+        const c = resolveComponent("router-link");
         return (
-          e(),
-          t("div", v, [
-            (e(!0),
-            t(
-              n,
+          openBlock(),
+          createElementBlock("div", v, [
+            (openBlock(!0),
+            createElementBlock(
+              Fragment,
               null,
-              s(
-                m(_),
+              renderList(
+                unref(_),
                 (a, u) => (
-                  e(),
-                  t("div", { class: "home-list-column", key: u }, [
-                    x("h1", null, r(a.name), 1),
-                    (e(!0),
-                    t(
-                      n,
-                      null,
-                      s(
-                        a.children,
-                        (o, p) => (
-                          e(),
-                          f(
-                            c,
-                            { to: { name: o.name }, key: p },
-                            { default: h(() => [k(r(o.name), 1)]), _: 2 },
-                            1032,
-                            ["to"]
-                          )
-                        )
+                  openBlock(),
+                  createElementBlock(
+                    "div",
+                    { class: "home-list-column", key: u },
+                    [
+                      createElementVNode(
+                        "h1",
+                        null,
+                        toDisplayString(a.name),
+                        1
                       ),
-                      128
-                    )),
-                  ])
+                      (openBlock(!0),
+                      createElementBlock(
+                        Fragment,
+                        null,
+                        renderList(
+                          a.children,
+                          (o, p) => (
+                            openBlock(),
+                            createBlock(
+                              c,
+                              { to: { name: o.name }, key: p },
+                              {
+                                default: withCtx(() => [
+                                  createTextVNode(toDisplayString(o.name), 1),
+                                ]),
+                                _: 2,
+                              },
+                              1032,
+                              ["to"]
+                            )
+                          )
+                        ),
+                        128
+                      )),
+                    ]
+                  )
                 )
               ),
               128

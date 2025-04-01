@@ -602,9 +602,9 @@ function ru(e = ["base"]) {
       ),
     "../views/map-animate/map-animate-zj.vue": () =>
       I(
-        () => import("./map-animate-zj-24f411fd.js"),
+        () => import("./map-animate-zj.js"),
         [
-          "assets/map-animate-zj-24f411fd.js",
+          "assets/map-animate-zj.js",
           "assets/animate2-2f11d126.js",
           "assets/OrbitControls-9c9ee6bc.js",
           "assets/index-1453e2ee.js",
@@ -1100,9 +1100,9 @@ const mr = () =>
 // 浙江地图
 const iu = () =>
   I(
-    () => import("./map-animate-zj-24f411fd.js"),
+    () => import("./map-animate-zj.js"),
     [
-      "assets/map-animate-zj-24f411fd.js",
+      "assets/map-animate-zj.js",
       "assets/animate2-2f11d126.js",
       "assets/OrbitControls-9c9ee6bc.js",
       "assets/index-1453e2ee.js",

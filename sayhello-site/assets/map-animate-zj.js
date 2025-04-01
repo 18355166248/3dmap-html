@@ -1,7 +1,7 @@
 import { _ as Q, a as Y } from "./animate2-2f11d126.js";
 import {
   g as Z,
-  C,
+  C as I,
   G as P,
   A as J,
   h as K,
@@ -9,23 +9,23 @@ import {
   P as te,
   j as ae,
   c as D,
-  L as T,
+  L as A,
   V as y,
-  d as k,
-  D as I,
+  d as j,
+  D as z,
   R as w,
   M as b,
   k as ie,
   b as M,
   l as S,
-  m as z,
+  m as B,
   n as G,
   N as se,
   o as ne,
   Q as oe,
   T as re,
-  p as $,
-  q as j,
+  p as k,
+  q as $,
   r as q,
   B as le,
   s as ce,
@@ -33,32 +33,32 @@ import {
   u as pe,
 } from "./OrbitControls-9c9ee6bc.js";
 import { M as he } from "./index-1453e2ee.js";
-import { m as ue, a as fe } from "./utils-9af1928d.js";
-import { D as me } from "./index-4ec0cc76.js";
-import { G as ge } from "./Grid-77f5dd1e.js";
-import { L as ve } from "./Label3d-1a598e21.js";
+import { g as ue, m as fe, a as me } from "./utils-9af1928d.js";
+import { D as ge } from "./index-4ec0cc76.js";
+import { G as ve } from "./Grid-77f5dd1e.js";
+import { L as ye } from "./Label3d-1a598e21.js";
 import { G as N, P as V } from "./GradientShader-7cc661aa.js";
-import { P as H } from "./Particles-a008e8a7.js";
+import { P as U } from "./Particles-a008e8a7.js";
 import { g as u } from "./index-4db78ffb.js";
 import {
-  A as ye,
-  B as U,
-  L as A,
-  E as be,
-  c as we,
-  p as X,
-  s as W,
-  i as xe,
+  A as be,
+  B as H,
+  L as T,
+  E as we,
+  c as xe,
+  p as W,
+  s as X,
+  i as Me,
 } from "./infoData-7934851e.js";
 import { l as O } from "./label-icon-aa0c6fbf.js";
-import { a as Me } from "./three.interactive-c6512469.js";
-import { h as Le } from "./heatmap.min-eb3a4a51.js";
+import { a as Le } from "./three.interactive-c6512469.js";
+import { h as Pe } from "./heatmap.min-eb3a4a51.js";
 import {
-  f as Pe,
-  g as Ge,
-  h as Se,
-  o as Ce,
-  c as Ie,
+  f as Ge,
+  g as Se,
+  h as Ce,
+  o as Ie,
+  c as ze,
   b as L,
   n as E,
 } from "./index-9ee60282.js";
@@ -73,10 +73,10 @@ import "./pathLine2-dee41061.js";
 import "./arrow-8777f461.js";
 import "./point1-7bb35866.js";
 import "./Line2-7598ed88.js";
-function F(B) {
-  return B.sort((t, a) => a.value - t.value), B;
+function F(_) {
+  return _.sort((t, a) => a.value - t.value), _;
 }
-class ze extends he {
+class Be extends he {
   constructor(t, a) {
     super(t, a),
       (this.pointCenter = [120.109913, 29.181466]),
@@ -84,7 +84,7 @@ class ze extends he {
       (this.depth = 0.5),
       (this.clicked = !1),
       (this.scene.fog = new Z(1058614, 1, 50)),
-      (this.scene.background = new C(1058614)),
+      (this.scene.background = new I(1058614)),
       this.camera.instance.position.set(
         -13.767695123014105,
         12.990152163077308,
@@ -93,20 +93,20 @@ class ze extends he {
       (this.camera.instance.near = 1),
       (this.camera.instance.far = 1e4),
       this.camera.instance.updateProjectionMatrix(),
-      (this.interactionManager = new Me(
+      (this.interactionManager = new Le(
         this.renderer.instance,
         this.camera.instance,
         this.canvas
       )),
       (this.labelGroup = new P()),
-      (this.label3d = new ve(this)),
+      (this.label3d = new ye(this)),
       this.labelGroup.rotateX(-Math.PI / 2),
       (this.eventElement = []),
       (this.defaultMaterial = null),
       (this.defaultLightMaterial = null),
       this.scene.add(this.labelGroup),
       this.initSetting(),
-      (this.assets = new ye(() => {
+      (this.assets = new be(() => {
         this.initEnvironment(),
           this.createFloor(),
           this.createChinaBlurLine(),
@@ -119,7 +119,6 @@ class ze extends he {
           this.createFlyLine(),
           this.createParticles(),
           this.createScatter(),
-          this.createHeatmap(),
           this.createInfoPoint();
         let s = u.timeline();
         s.addLabel("focusMap", 2),
@@ -346,7 +345,7 @@ class ze extends he {
         e.add(t, "y", -30, 30, 1),
         e.add(t, "z", -30, 30, 1),
         e.onChange(({ object: i }) => {
-          (a.color = new C(i.color)),
+          (a.color = new I(i.color)),
             (a.distance = i.distance),
             (a.intensity = i.intensity),
             a.position.set(i.x, i.y, i.z),
@@ -355,7 +354,7 @@ class ze extends he {
     }
   }
   initSetting() {
-    (this.debug = new me(!1)),
+    (this.debug = new ge(!1)),
       (this.renderer.instance.shadowMap.enabled = !1),
       this.renderer.resize();
   }
@@ -366,38 +365,39 @@ class ze extends he {
       { zhejiang: i, zhejiangTop: r, guangdonLine: c } = this.createProvince();
     a.setParent(t),
       s.setParent(t),
+      console.log(ue(i.mapGroup)),
       i.setParent(this.focusMapGroup),
       r.setParent(this.focusMapGroup),
       c.setParent(this.focusMapGroup),
       this.focusMapGroup.position.set(0, 0, -0.01),
       this.focusMapGroup.scale.set(1, 1, 0),
       t.add(this.focusMapGroup),
-      t.rotateX(-Math.PI / 2),
+      (t.rotation.x = -Math.PI / 2),
       t.position.set(0, 0.2, 0),
       this.scene.add(t),
       this.createBar();
   }
   createChina() {
     let t = this.assets.instance.getResource("china"),
-      a = new U(this, {
+      a = new H(this, {
         data: t,
         center: this.pointCenter,
         merge: !1,
         material: new D({ color: 1387591, transparent: !0, opacity: 1 }),
         renderOrder: 2,
       }),
-      s = new A(this, {
+      s = new T(this, {
         center: this.pointCenter,
         visibelProvince: "广东省",
         data: t,
-        material: new T({ color: 4162253 }),
+        material: new A({ color: 4162253 }),
         renderOrder: 3,
       });
     s.lineGroup.position.z += 0.01;
-    let e = new A(this, {
+    let e = new T(this, {
       center: this.pointCenter,
       data: t,
-      material: new T({ color: 4162253, transparent: !0, opacity: 0.4 }),
+      material: new A({ color: 4162253, transparent: !0, opacity: 0.4 }),
       renderOrder: 3,
     });
     return (
@@ -409,7 +409,7 @@ class ze extends he {
     let t = this.assets.instance.getResource("zhejiang"),
       [a, s] = this.createProvinceMaterial();
     (this.focusMapTopMaterial = a), (this.focusMapSideMaterial = s);
-    let e = new be(this, {
+    let e = new we(this, {
         center: this.pointCenter,
         position: new y(0, 0, 0.11),
         data: t,
@@ -418,13 +418,13 @@ class ze extends he {
         sideMaterial: s,
         renderOrder: 9,
       }),
-      i = new k({ color: 16777215, transparent: !0, opacity: 0.5 });
+      i = new j({ color: 16777215, transparent: !0, opacity: 0.5 });
     new N(i, { uColor1: 2780818, uColor2: 1058614 }),
       (this.defaultMaterial = i),
       (this.defaultLightMaterial = this.defaultMaterial.clone()),
       this.defaultLightMaterial.emissive.setHex(725293),
       (this.defaultLightMaterial.emissiveIntensity = 3.5);
-    let r = new U(this, {
+    let r = new H(this, {
       center: this.pointCenter,
       position: new y(0, 0, 0.72),
       data: t,
@@ -436,13 +436,13 @@ class ze extends he {
         l.type === "Mesh" && this.eventElement.push(l);
       });
     }),
-      (this.zhejiangLineMaterial = new T({
+      (this.zhejiangLineMaterial = new A({
         color: 16777215,
         opacity: 0,
         transparent: !0,
         fog: !1,
       }));
-    let c = new A(this, {
+    let c = new T(this, {
       center: this.pointCenter,
       data: t,
       material: this.zhejiangLineMaterial,
@@ -459,13 +459,13 @@ class ze extends he {
       transparent: !0,
       opacity: 0,
       fog: !1,
-      side: I,
+      side: z,
     });
     t.onBeforeCompile = (e) => {
       (e.uniforms = {
         ...e.uniforms,
-        uColor1: { value: new C(2780818) },
-        uColor2: { value: new C(1058614) },
+        uColor1: { value: new I(2780818) },
+        uColor2: { value: new I(1058614) },
       }),
         (e.vertexShader = e.vertexShader.replace(
           "void main() {",
@@ -514,7 +514,7 @@ class ze extends he {
     };
     let a = this.assets.instance.getResource("side");
     (a.wrapS = w), (a.wrapT = w), a.repeat.set(1, 1.5), (a.offset.y += 0.065);
-    let s = new k({ color: 16777215, map: a, fog: !1, opacity: 0, side: I });
+    let s = new j({ color: 16777215, map: a, fog: !1, opacity: 0, side: z });
     return (
       this.time.on("tick", () => {
         a.offset.y += 0.005;
@@ -522,8 +522,8 @@ class ze extends he {
       (s.onBeforeCompile = (e) => {
         (e.uniforms = {
           ...e.uniforms,
-          uColor1: { value: new C(2780818) },
-          uColor2: { value: new C(2780818) },
+          uColor1: { value: new I(2780818) },
+          uColor2: { value: new I(2780818) },
         }),
           (e.vertexShader = e.vertexShader.replace(
             "void main() {",
@@ -586,7 +586,11 @@ class ze extends he {
       this.interactionManager.add(e),
         e.addEventListener("mousedown", (i) => {
           if (this.clicked) return !1;
-          (this.clicked = !0), console.log(i.target.userData.name);
+          this.clicked = !0;
+          let r = new y();
+          i.target.getWorldPosition(r),
+            console.log(r),
+            this.camera.instance.position.copy(r);
         }),
         e.addEventListener("mouseup", (i) => {
           this.clicked = !1;
@@ -608,7 +612,7 @@ class ze extends he {
   }
   createBar() {
     let t = this,
-      a = F(X).filter((o, l) => l < 7);
+      a = F(W).filter((o, l) => l < 7);
     const s = new P(),
       e = 0.7,
       i = 4 * e,
@@ -637,16 +641,16 @@ class ze extends he {
         const f = new M(h, n);
         f.renderOrder = 5;
         let d = f,
-          [g, m] = this.geoProjection(o.centroid);
-        d.position.set(g, -m, 0.95), d.scale.set(1, 1, 0);
-        let v = this.createQuan(new y(g, 0.94, m), l),
+          [v, m] = this.geoProjection(o.centroid);
+        d.position.set(v, -m, 0.95), d.scale.set(1, 1, 0);
+        let g = this.createQuan(new y(v, 0.94, m), l),
           x = this.createHUIGUANG(p, l > 3 ? 16776948 : 7863285);
         d.add(...x), s.add(d), (s.rotation.x = -Math.PI / 2);
-        let _ = c(o, l, new y(g, -m, 1.6 + p));
+        let C = c(o, l, new y(v, -m, 1.6 + p));
         this.allBar.push(d),
           this.allBarMaterial.push(n),
-          this.allGuangquan.push(v),
-          this.allProvinceLabel.push(_);
+          this.allGuangquan.push(g),
+          this.allProvinceLabel.push(C);
       }),
       this.scene.add(s);
     function c(o, l, p) {
@@ -677,14 +681,14 @@ class ze extends he {
     let s = new S(0.35, t);
     s.translate(0, t / 2, 0);
     const e = this.assets.instance.getResource("huiguang");
-    (e.colorSpace = z), (e.wrapS = w), (e.wrapT = w);
+    (e.colorSpace = B), (e.wrapS = w), (e.wrapT = w);
     let i = new b({
         color: a,
         map: e,
         transparent: !0,
         opacity: 0.4,
         depthWrite: !1,
-        side: I,
+        side: z,
         blending: G,
       }),
       r = new M(s, i);
@@ -743,7 +747,7 @@ class ze extends he {
     );
   }
   createGrid() {
-    new ge(this, {
+    new ve(this, {
       gridSize: 50,
       gridDivision: 20,
       gridColor: 1788784,
@@ -759,7 +763,7 @@ class ze extends he {
   createFloor() {
     let t = new S(20, 20);
     const a = this.assets.instance.getResource("ocean");
-    (a.colorSpace = z), (a.wrapS = w), (a.wrapT = w), a.repeat.set(1, 1);
+    (a.colorSpace = B), (a.wrapS = w), (a.wrapT = w), a.repeat.set(1, 1);
     let s = new b({ map: a, opacity: 1 }),
       e = new M(t, s);
     e.rotateX(-Math.PI / 2), e.position.set(0, -0.7, 0), this.scene.add(e);
@@ -767,7 +771,7 @@ class ze extends he {
   createChinaBlurLine() {
     let t = new S(147, 147);
     const a = this.assets.instance.getResource("chinaBlurLine");
-    (a.colorSpace = z),
+    (a.colorSpace = B),
       (a.wrapS = w),
       (a.wrapT = w),
       (a.generateMipmaps = !1),
@@ -802,7 +806,7 @@ class ze extends he {
       s.play();
     });
     let e = new ne(s);
-    e.colorSpace = z;
+    e.colorSpace = B;
     let i = 1.2,
       r = new S(2.5 * i, 1 * i),
       c = new b({
@@ -823,7 +827,7 @@ class ze extends he {
       a = this.labelGroup,
       s = this.label3d,
       e = [];
-    we.map((n) => {
+    xe.map((n) => {
       if (n.hide == !0) return !1;
       let h = o(n, s, a);
       e.push(h);
@@ -862,11 +866,11 @@ class ze extends he {
     e.push(i), e.push(r), e.push(c), (this.otherLabel = e);
     function o(n, h, f) {
       let d = h.create("", `china-label ${n.blur ? " blur" : ""}`, !1);
-      const [g, m] = t.geoProjection(n.center);
+      const [v, m] = t.geoProjection(n.center);
       return (
         d.init(
           `<div class="other-label"><img class="label-icon" src="${O}">${n.name}</div>`,
-          new y(g, -m, 0.4)
+          new y(v, -m, 0.4)
         ),
         h.setLabelStyle(d, 0.02, "x"),
         d.setParent(f),
@@ -875,11 +879,11 @@ class ze extends he {
     }
     function l(n, h, f) {
       let d = h.create("", "guangdong-label", !1);
-      const [g, m] = t.geoProjection(n.center);
+      const [v, m] = t.geoProjection(n.center);
       return (
         d.init(
           `<div class="other-label"><span>${n.name}</span><span>${n.enName}</span></div>`,
-          new y(g, -m, 0.4)
+          new y(v, -m, 0.4)
         ),
         h.setLabelStyle(d, 0.02, "x"),
         d.setParent(f),
@@ -892,11 +896,11 @@ class ze extends he {
         `decoration-label  ${n.reflect ? " reflect" : ""}`,
         !1
       );
-      const [g, m] = t.geoProjection(n.center);
+      const [v, m] = t.geoProjection(n.center);
       return (
         d.init(
           `<div class="other-label"><img class="label-icon" style="width:${n.width};height:${n.height}" src="${n.icon}">`,
-          new y(g, -m, 0.4)
+          new y(v, -m, 0.4)
         ),
         h.setLabelStyle(d, 0.02, "x"),
         d.setParent(f),
@@ -917,7 +921,7 @@ class ze extends he {
           color: 4763647,
           transparent: !0,
           opacity: 0.2,
-          side: I,
+          side: z,
           depthWrite: !1,
           blending: G,
         }),
@@ -935,7 +939,7 @@ class ze extends he {
         color: 4763647,
         transparent: !0,
         opacity: 0.4,
-        side: I,
+        side: z,
         depthWrite: !1,
         blending: G,
       }),
@@ -952,7 +956,7 @@ class ze extends he {
       (this.flyLineGroup.visible = !1),
       this.scene.add(this.flyLineGroup);
     const t = this.assets.instance.getResource("flyLine");
-    (t.colorSpace = z), (t.wrapS = w), (t.wrapT = w), t.repeat.set(1, 1);
+    (t.colorSpace = B), (t.wrapS = w), (t.wrapT = w), t.repeat.set(1, 1);
     const a = 0.03,
       s = 32,
       e = 8,
@@ -972,18 +976,18 @@ class ze extends he {
     this.time.on("tick", () => {
       t.offset.x -= 0.006;
     }),
-      X.filter((p, n) => n < 7).map((p) => {
+      W.filter((p, n) => n < 7).map((p) => {
         let [n, h] = this.geoProjection(p.centroid),
           f = new y(n, -h, 0);
         const d = new y();
         d.addVectors(o, f).multiplyScalar(0.5), d.setZ(3);
-        const g = new oe(o, d, f),
-          m = new re(g, s, a, e, i),
-          v = new M(m, l);
-        (v.rotation.x = -Math.PI / 2),
-          v.position.set(0, 0.94, 0),
-          (v.renderOrder = 21),
-          this.flyLineGroup.add(v);
+        const v = new oe(o, d, f),
+          m = new re(v, s, a, e, i),
+          g = new M(m, l);
+        (g.rotation.x = -Math.PI / 2),
+          g.position.set(0, 0.94, 0),
+          (g.renderOrder = 21),
+          this.flyLineGroup.add(g);
       }),
       this.createFlyLineFocus();
   }
@@ -1037,13 +1041,13 @@ class ze extends he {
       });
   }
   createParticles() {
-    (this.particles = new H(this, {
+    (this.particles = new U(this, {
       num: 10,
       range: 30,
       dir: "up",
       speed: 0.05,
-      material: new $({
-        map: H.createTexture(),
+      material: new k({
+        map: U.createTexture(),
         size: 1,
         color: 61166,
         transparent: !0,
@@ -1067,14 +1071,14 @@ class ze extends he {
       (this.scatterGroup.rotation.x = -Math.PI / 2),
       this.scene.add(this.scatterGroup);
     const t = this.assets.instance.getResource("arrow"),
-      a = new j({
+      a = new $({
         map: t,
         color: 16776948,
         fog: !1,
         transparent: !0,
         depthTest: !1,
       });
-    let s = F(W),
+    let s = F(X),
       e = s[0].value;
     s.map((i) => {
       const r = new q(a);
@@ -1089,28 +1093,29 @@ class ze extends he {
   }
   createHeatmap() {
     const s = [],
-      e = W.map((x) => {
-        let [_, R] = this.geoProjection([x.lng, x.lat]);
+      e = X.map((x) => {
+        let [C, R] = this.geoProjection([x.lng, x.lat]);
         return (
-          s.push(_, -R, 0.952),
+          s.push(C, -R, 0.952),
+          console.log(C, C * 100, Math.floor(C * 100) + 1e3),
           {
             value: x.value,
-            x: Math.floor(_ * 100) + 1e3,
+            x: Math.floor(C * 100) + 1e3,
             y: Math.floor(-R * 100) + 1e3,
           }
         );
       });
-    let i = ue(e, (x) => x.value).value,
-      r = fe(e, (x) => x.value).value;
+    let i = fe(e, (x) => x.value).value,
+      r = me(e, (x) => x.value).value;
     const c = new le();
     c.setAttribute("position", new ce(s, 3));
-    const o = new $({ size: 0.2, color: 16777215 });
+    const o = new k({ size: 0.2, color: 16777215 });
     let l = new de(c, o);
     l.rotateX(-Math.PI / 2), this.scene.add(l);
     const p = 3600,
       n = 1800;
     let h = document.createElement("div");
-    var f = Le.create({
+    var f = Pe.create({
       container: h,
       radius: 100,
       width: p,
@@ -1119,21 +1124,22 @@ class ze extends he {
     });
     f.setData({ max: i, min: r, data: e });
     let d = new S(p, n),
-      g = new pe(f._renderer.canvas);
+      v = new pe(f._renderer.canvas);
     var m = new b({
-      map: g,
+      map: v,
       transparent: !0,
-      depthTest: !1,
-      side: I,
+      depthWrite: !1,
+      side: z,
       fog: !1,
       wireframe: !1,
     });
     m.map.needsUpdate = !0;
-    let v = new M(d, m);
-    v.rotateX(Math.PI / 2),
-      v.position.set(p / 100 - 28, 0.952, -n / 100 + 19),
-      v.scale.set(1 / 100, 1 / 100, 1),
-      this.scene.add(v);
+    let g = new M(d, m);
+    (g.rotation.x = Math.PI / 2),
+      (g.renderOrder = 22),
+      g.position.set(p / 100, 0.952, -n / 100),
+      g.scale.set(1 / 100, 1 / 100, 1),
+      this.scene.add(g);
   }
   createInfoPoint() {
     let t = this;
@@ -1147,10 +1153,10 @@ class ze extends he {
     let a = this.label3d;
     const s = this.assets.instance.getResource("point");
     let e = [16776948, 7863285],
-      i = F(xe),
+      i = F(Me),
       r = i[0].value;
     i.map((o, l) => {
-      const p = new j({
+      const p = new $({
           map: s,
           color: e[l % e.length],
           fog: !1,
@@ -1162,9 +1168,9 @@ class ze extends he {
       let h = 0.7 + (o.value / r) * 0.4;
       n.scale.set(h, h, h);
       let [f, d] = this.geoProjection([o.lng, o.lat]),
-        g = [f, -d, this.depth + 0.7];
-      n.position.set(...g),
-        (n.userData.position = [...g]),
+        v = [f, -d, this.depth + 0.7];
+      n.position.set(...v),
+        (n.userData.position = [...v]),
         (n.userData = {
           position: [f, -d, this.depth + 0.7],
           name: o.name,
@@ -1176,23 +1182,23 @@ class ze extends he {
       let m = c(o, a, this.InfoPointGroup);
       this.infoLabelElement.push(m),
         this.interactionManager.add(n),
-        n.addEventListener("mousedown", (v) => {
+        n.addEventListener("mousedown", (g) => {
           if (this.clicked) return !1;
           (this.clicked = !0),
-            (this.infoPointIndex = v.target.userData.index),
+            (this.infoPointIndex = g.target.userData.index),
             this.infoLabelElement.map((x) => {
               x.hide();
             }),
             m.show(),
             this.createInfoPointLabelLoop();
         }),
-        n.addEventListener("mouseup", (v) => {
+        n.addEventListener("mouseup", (g) => {
           this.clicked = !1;
         }),
-        n.addEventListener("mouseover", (v) => {
+        n.addEventListener("mouseover", (g) => {
           document.body.style.cursor = "pointer";
         }),
-        n.addEventListener("mouseout", (v) => {
+        n.addEventListener("mouseout", (g) => {
           document.body.style.cursor = "default";
         });
     });
@@ -1263,116 +1269,116 @@ class ze extends he {
       this.stats && this.stats.dom && document.body.removeChild(this.stats.dom);
   }
 }
-const Be = { class: "map-gd" },
-  _e = L("canvas", { id: "canvas" }, null, -1),
-  Ee = {
-    ref: "video1",
-    class: "map-gd-video map-gd-video1",
-    width: "250",
-    height: "100",
-    loop: "",
-    crossorigin: "anonymous",
-    playsinline: "",
-    style: { display: "none" },
+const _e = { class: "map-gd" };
+const Ee = L("canvas", { id: "canvas" }, null, -1);
+const Ae = {
+  ref: "video1",
+  class: "map-gd-video map-gd-video1",
+  width: "250",
+  height: "100",
+  loop: "",
+  crossorigin: "anonymous",
+  playsinline: "",
+  style: { display: "none" },
+};
+const Te = L("source", { src: Q }, null, -1);
+const Oe = [Te];
+const Fe = {
+  ref: "video2",
+  class: "map-gd-video map-gd-video2",
+  width: "250",
+  height: "100",
+  loop: "",
+  crossorigin: "anonymous",
+  playsinline: "",
+  style: { display: "none" },
+};
+const Re = L("source", { src: Y }, null, -1);
+const De = [Re];
+const je = { class: "map-btn-group" };
+const ht = {
+  __name: "map-animate-zj",
+  setup(_) {
+    let t = null;
+    const a = Ge({
+        flyLine: !1,
+        scatter: !1,
+        particle: !1,
+        path: !1,
+        info: !1,
+      }),
+      s = (e) => {
+        (a[e] = !a[e]),
+          e === "particle" &&
+            ((t.particles.enable = a[e]),
+            (t.particles.instance.visible = a[e])),
+          e === "flyLine" &&
+            ((t.flyLineGroup.visible = a[e]),
+            (t.flyLineFocusGroup.visible = a[e])),
+          e === "scatter" && (t.scatterGroup.visible = a[e]),
+          e === "info" &&
+            ((t.InfoPointGroup.visible = a[e]),
+            a[e]
+              ? t.createInfoPointLabelLoop()
+              : (clearInterval(t.infoPointLabelTime),
+                t.infoLabelElement.map((i) => i.hide())));
+      };
+    return (
+      Se(() => {
+        t = new Be(document.getElementById("canvas"), {
+          geoProjectionCenter: [120.109913, 29.181466],
+        });
+      }),
+      Ce(() => {
+        t && t.destroy();
+      }),
+      (e, i) => (
+        Ie(),
+        ze("div", _e, [
+          Ee,
+          L("video", Ae, Oe, 512),
+          L("video", Fe, De, 512),
+          L("div", je, [
+            L(
+              "div",
+              {
+                class: E(["btn", { active: a.flyLine }]),
+                onClick: i[0] || (i[0] = (r) => s("flyLine")),
+              },
+              " 飞线 ",
+              2
+            ),
+            L(
+              "div",
+              {
+                class: E(["btn", { active: a.scatter }]),
+                onClick: i[1] || (i[1] = (r) => s("scatter")),
+              },
+              " 散点图 ",
+              2
+            ),
+            L(
+              "div",
+              {
+                class: E(["btn", { active: a.info }]),
+                onClick: i[2] || (i[2] = (r) => s("info")),
+              },
+              " 重点点位 ",
+              2
+            ),
+            L(
+              "div",
+              {
+                class: E(["btn", { active: a.particle }]),
+                onClick: i[3] || (i[3] = (r) => s("particle")),
+              },
+              " 粒子特效 ",
+              2
+            ),
+          ]),
+        ])
+      )
+    );
   },
-  Te = L("source", { src: Q }, null, -1),
-  Ae = [Te],
-  Oe = {
-    ref: "video2",
-    class: "map-gd-video map-gd-video2",
-    width: "250",
-    height: "100",
-    loop: "",
-    crossorigin: "anonymous",
-    playsinline: "",
-    style: { display: "none" },
-  },
-  Fe = L("source", { src: Y }, null, -1),
-  Re = [Fe],
-  De = { class: "map-btn-group" },
-  pt = {
-    __name: "map-animate-common",
-    setup(B) {
-      let t = null;
-      const a = Pe({
-          flyLine: !1,
-          scatter: !1,
-          particle: !1,
-          path: !1,
-          info: !1,
-        }),
-        s = (e) => {
-          (a[e] = !a[e]),
-            e === "particle" &&
-              ((t.particles.enable = a[e]),
-              (t.particles.instance.visible = a[e])),
-            e === "flyLine" &&
-              ((t.flyLineGroup.visible = a[e]),
-              (t.flyLineFocusGroup.visible = a[e])),
-            e === "scatter" && (t.scatterGroup.visible = a[e]),
-            e === "info" &&
-              ((t.InfoPointGroup.visible = a[e]),
-              a[e]
-                ? t.createInfoPointLabelLoop()
-                : (clearInterval(t.infoPointLabelTime),
-                  t.infoLabelElement.map((i) => i.hide())));
-        };
-      return (
-        Ge(() => {
-          t = new ze(document.getElementById("canvas"), {
-            geoProjectionCenter: [120.109913, 29.181466],
-          });
-        }),
-        Se(() => {
-          t && t.destroy();
-        }),
-        (e, i) => (
-          Ce(),
-          Ie("div", Be, [
-            _e,
-            L("video", Ee, Ae, 512),
-            L("video", Oe, Re, 512),
-            L("div", De, [
-              L(
-                "div",
-                {
-                  class: E(["btn", { active: a.flyLine }]),
-                  onClick: i[0] || (i[0] = (r) => s("flyLine")),
-                },
-                " 飞线 ",
-                2
-              ),
-              L(
-                "div",
-                {
-                  class: E(["btn", { active: a.scatter }]),
-                  onClick: i[1] || (i[1] = (r) => s("scatter")),
-                },
-                " 散点图 ",
-                2
-              ),
-              L(
-                "div",
-                {
-                  class: E(["btn", { active: a.info }]),
-                  onClick: i[2] || (i[2] = (r) => s("info")),
-                },
-                " 重点点位 ",
-                2
-              ),
-              L(
-                "div",
-                {
-                  class: E(["btn", { active: a.particle }]),
-                  onClick: i[3] || (i[3] = (r) => s("particle")),
-                },
-                " 粒子特效 ",
-                2
-              ),
-            ]),
-          ])
-        )
-      );
-    },
-  };
-export { pt as default };
+};
+export { ht as default };

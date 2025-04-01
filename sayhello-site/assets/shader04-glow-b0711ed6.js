@@ -1,4 +1,18 @@
-import{l as i,z as a,D as c,n as l,a as r,b as d}from"./OrbitControls-9c9ee6bc.js";import{M as v}from"./index-1453e2ee.js";import{D as p}from"./index-4ec0cc76.js";import{s as m}from"./stats.module-077ce25d.js";import{_ as f}from"./_plugin-vue_export-helper-c27b6911.js";import{g as h,h as u,o as g,c as w}from"./index-9ee60282.js";import"./lil-gui.module.min-f00c3c61.js";const y=`// varying float vRandom;\r
+import {
+  l as i,
+  z as a,
+  D as c,
+  n as l,
+  a as r,
+  b as d,
+} from "./OrbitControls-9c9ee6bc.js";
+import { M as v } from "./index-1453e2ee.js";
+import { D as p } from "./index-4ec0cc76.js";
+import { s as m } from "./stats.module-077ce25d.js";
+import { _ as f } from "./_plugin-vue_export-helper-c27b6911.js";
+import { g as h, h as u, o as g, c as w } from "./index-9ee60282.js";
+import "./lil-gui.module.min-f00c3c61.js";
+const y = `// varying float vRandom;\r
 // void main() {\r
 //     gl_FragColor = vec4(vRandom, vRandom * 0.5, 1.0, 1.0);\r
 // }\r
@@ -143,7 +157,8 @@ void main() {\r
 \r
     //Output to screen\r
     gl_FragColor = vec4(col, 1.0);\r
-}`,_=`\r
+}`,
+  _ = `\r
 varying vec2 vUv;\r
 void main() {\r
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);\r
@@ -152,4 +167,67 @@ void main() {\r
     gl_Position = projectionPosition;\r
     vUv = uv;\r
 \r
-}`;class x extends v{constructor(t){super(t),this.camera.instance.position.set(31.654053063076066,18.17832104360899,31.654053063096544),this.initSetting(),this.initModel()}initSetting(){this.debug=new p(!0),this.stats=new m,document.body.appendChild(this.stats.dom),this.setAxesHelper(10)}initModel(){const t=new i(40,20,1),n=new a({vertexShader:_,fragmentShader:y,side:c,transparent:!0,blending:l,opacity:.2,uniforms:{iResolution:{value:new r},iTime:{value:0}}});n.uniforms.iResolution.value=new r(this.sizes.width,this.sizes.height);let e=new d(t,n);e.rotateX(-Math.PI/2),this.scene.add(e),this.time.on("tick",(s,q)=>{n.uniforms.iTime.value+=s})}update(){super.update(),this.stats&&this.stats.update()}destroy(){super.destroy(),this.debug.destroy(),document.body.removeChild(this.stats.dom)}}const k={id:"canvas"},b={__name:"shader04-glow",setup(o){let t=null;return h(()=>{t=new x(document.getElementById("canvas"))}),u(()=>{t&&t.destroy()}),(n,e)=>(g(),w("canvas",k))}},R=f(b,[["__scopeId","data-v-73f79cec"]]);export{R as default};
+}`;
+class x extends v {
+  constructor(t) {
+    super(t),
+      this.camera.instance.position.set(
+        31.654053063076066,
+        18.17832104360899,
+        31.654053063096544
+      ),
+      this.initSetting(),
+      this.initModel();
+  }
+  initSetting() {
+    (this.debug = new p(!0)),
+      (this.stats = new m()),
+      document.body.appendChild(this.stats.dom),
+      this.setAxesHelper(10);
+  }
+  initModel() {
+    const t = new i(40, 20, 1),
+      n = new a({
+        vertexShader: _,
+        fragmentShader: y,
+        side: c,
+        transparent: !0,
+        blending: l,
+        opacity: 0.2,
+        uniforms: { iResolution: { value: new r() }, iTime: { value: 0 } },
+      });
+    n.uniforms.iResolution.value = new r(this.sizes.width, this.sizes.height);
+    let e = new d(t, n);
+    e.rotateX(-Math.PI / 2),
+      this.scene.add(e),
+      this.time.on("tick", (s, q) => {
+        n.uniforms.iTime.value += s;
+      });
+  }
+  update() {
+    super.update(), this.stats && this.stats.update();
+  }
+  destroy() {
+    super.destroy(),
+      this.debug.destroy(),
+      document.body.removeChild(this.stats.dom);
+  }
+}
+const k = { id: "canvas" },
+  b = {
+    __name: "shader04-glow",
+    setup(o) {
+      let t = null;
+      return (
+        h(() => {
+          t = new x(document.getElementById("canvas"));
+        }),
+        u(() => {
+          t && t.destroy();
+        }),
+        (n, e) => (g(), w("canvas", k))
+      );
+    },
+  },
+  R = f(b, [["__scopeId", "data-v-73f79cec"]]);
+export { R as default };

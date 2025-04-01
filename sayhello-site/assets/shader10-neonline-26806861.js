@@ -1,4 +1,25 @@
-import{O as u,a as i,l as h,z as v,n as p,C as m,b as f,bJ as g,B as w,L as x,ac as y}from"./OrbitControls-9c9ee6bc.js";import{M as _}from"./index-1453e2ee.js";import{D as P}from"./index-4ec0cc76.js";import{g as C}from"./index-4db78ffb.js";import{e as k}from"./GC-b02a3dbf.js";import{s as z}from"./stats.module-077ce25d.js";import{_ as b}from"./_plugin-vue_export-helper-c27b6911.js";import{g as S,h as q,o as O,c as T}from"./index-9ee60282.js";import"./lil-gui.module.min-f00c3c61.js";const B=`varying vec2 vUv;\r
+import {
+  O as u,
+  a as i,
+  l as h,
+  z as v,
+  n as p,
+  C as m,
+  b as f,
+  bJ as g,
+  B as w,
+  L as x,
+  ac as y,
+} from "./OrbitControls-9c9ee6bc.js";
+import { M as _ } from "./index-1453e2ee.js";
+import { D as P } from "./index-4ec0cc76.js";
+import { g as C } from "./index-4db78ffb.js";
+import { e as k } from "./GC-b02a3dbf.js";
+import { s as z } from "./stats.module-077ce25d.js";
+import { _ as b } from "./_plugin-vue_export-helper-c27b6911.js";
+import { g as S, h as q, o as O, c as T } from "./index-9ee60282.js";
+import "./lil-gui.module.min-f00c3c61.js";
+const B = `varying vec2 vUv;\r
 // #define POINT_COUNT 20\r
 \r
 uniform vec2 uCoords[POINT_COUNT];\r
@@ -107,7 +128,8 @@ void main() {\r
 \r
     //Output to screen\r
     gl_FragColor = vec4(col, 1.0);\r
-}`,M=`\r
+}`,
+  M = `\r
 varying vec2 vUv;\r
 void main() {\r
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);\r
@@ -116,4 +138,167 @@ void main() {\r
     gl_Position = projectionPosition;\r
     vUv = uv;\r
 \r
-}`;class N extends u{constructor(e,t){super(),this.config=Object.assign({curveData:[],radius1:.04,radius2:.2,shaderPoints:20,curvePoints:100,duration:3,width:60,height:120,color:65535,showTestLine:!0},t),this.material=null,this.points=null,this.init(),this.createCurve(),this.resize(),this.run()}init(){let e=this.config,t=new Array(e.shaderPoints).fill(0).map(()=>new i);const n=new h(e.width,e.height,1),r=new v({vertexShader:M,fragmentShader:B,transparent:!0,blending:p,defines:{POINT_COUNT:e.shaderPoints},uniforms:{uTime:{value:0},uCoords:{value:t},uRatio:{value:new i},uSize:{value:new i},uColor:{value:new m(e.color)}}});this.material=r;let s=new f(n,r);this.add(s)}createCurve(){let e=this.config,n=new g(e.curveData).getPoints(e.curvePoints);this.points=n;const r=new w().setFromPoints(n);if(e.showTestLine){const s=new x({color:16711680}),o=new y(r,s);this.add(o)}}run(){let e=this.config,t=this.points,n=this.material,r=e.shaderPoints,s=t.length-1,o=new Array(e.shaderPoints).fill(0).map((a,l)=>t[l]);t=[...t,...o];let d={index:0};this.gsapInstance=C.to(d,{index:s,duration:e.duration,repeat:-1,ease:"none",delay:0,onUpdate:()=>{let a=Math.floor(d.index),l=t.slice(a,a+r);n.uniforms.uCoords.value=l}})}resize(){let e=this.config;if(this.material){let t=this.material,n=e.width,r=e.height;t.uniforms.uSize.value.set(e.radius1,e.radius2),n>=r?(t.uniforms.uRatio.value.set(1,r/n),t.uniforms.uSize.value.multiplyScalar(1/n)):(t.uniforms.uRatio.value.set(n/r,1),t.uniforms.uSize.value.multiplyScalar(1/r))}}destroy(){this.gsapInstance&&this.gsapInstance.kill(),k(this)}}class U extends _{constructor(e){super(e),this.camera.instance.position.set(0,0,50),this.initSetting(),this.initModel()}initSetting(){this.debug=new P(!0),this.stats=new z,document.body.appendChild(this.stats.dom),this.setAxesHelper(10)}initModel(){this.neoline=new N(this,{curveData:[new i(10,6),new i(10,-6),new i(-10,-6),new i(-10,6),new i(10,6)],radius1:.04,radius2:.2,shaderPoints:20,curvePoints:100,duration:3,width:60,height:120,color:16711935,showTestLine:!1}),this.scene.add(this.neoline)}update(){super.update(),this.stats&&this.stats.update()}resize(){super.resize(),this.neoline&&this.neoline.resize()}destroy(){super.destroy(),this.neoline&&this.neoline.destroy(),this.debug.destroy(),document.body.removeChild(this.stats.dom)}}const I={id:"canvas"},D={__name:"shader10-neonline",setup(c){let e=null;return S(()=>{e=new U(document.getElementById("canvas"))}),q(()=>{e&&e.destroy()}),(t,n)=>(O(),T("canvas",I))}},J=b(D,[["__scopeId","data-v-40d8d097"]]);export{J as default};
+}`;
+class N extends u {
+  constructor(e, t) {
+    super(),
+      (this.config = Object.assign(
+        {
+          curveData: [],
+          radius1: 0.04,
+          radius2: 0.2,
+          shaderPoints: 20,
+          curvePoints: 100,
+          duration: 3,
+          width: 60,
+          height: 120,
+          color: 65535,
+          showTestLine: !0,
+        },
+        t
+      )),
+      (this.material = null),
+      (this.points = null),
+      this.init(),
+      this.createCurve(),
+      this.resize(),
+      this.run();
+  }
+  init() {
+    let e = this.config,
+      t = new Array(e.shaderPoints).fill(0).map(() => new i());
+    const n = new h(e.width, e.height, 1),
+      r = new v({
+        vertexShader: M,
+        fragmentShader: B,
+        transparent: !0,
+        blending: p,
+        defines: { POINT_COUNT: e.shaderPoints },
+        uniforms: {
+          uTime: { value: 0 },
+          uCoords: { value: t },
+          uRatio: { value: new i() },
+          uSize: { value: new i() },
+          uColor: { value: new m(e.color) },
+        },
+      });
+    this.material = r;
+    let s = new f(n, r);
+    this.add(s);
+  }
+  createCurve() {
+    let e = this.config,
+      n = new g(e.curveData).getPoints(e.curvePoints);
+    this.points = n;
+    const r = new w().setFromPoints(n);
+    if (e.showTestLine) {
+      const s = new x({ color: 16711680 }),
+        o = new y(r, s);
+      this.add(o);
+    }
+  }
+  run() {
+    let e = this.config,
+      t = this.points,
+      n = this.material,
+      r = e.shaderPoints,
+      s = t.length - 1,
+      o = new Array(e.shaderPoints).fill(0).map((a, l) => t[l]);
+    t = [...t, ...o];
+    let d = { index: 0 };
+    this.gsapInstance = C.to(d, {
+      index: s,
+      duration: e.duration,
+      repeat: -1,
+      ease: "none",
+      delay: 0,
+      onUpdate: () => {
+        let a = Math.floor(d.index),
+          l = t.slice(a, a + r);
+        n.uniforms.uCoords.value = l;
+      },
+    });
+  }
+  resize() {
+    let e = this.config;
+    if (this.material) {
+      let t = this.material,
+        n = e.width,
+        r = e.height;
+      t.uniforms.uSize.value.set(e.radius1, e.radius2),
+        n >= r
+          ? (t.uniforms.uRatio.value.set(1, r / n),
+            t.uniforms.uSize.value.multiplyScalar(1 / n))
+          : (t.uniforms.uRatio.value.set(n / r, 1),
+            t.uniforms.uSize.value.multiplyScalar(1 / r));
+    }
+  }
+  destroy() {
+    this.gsapInstance && this.gsapInstance.kill(), k(this);
+  }
+}
+class U extends _ {
+  constructor(e) {
+    super(e),
+      this.camera.instance.position.set(0, 0, 50),
+      this.initSetting(),
+      this.initModel();
+  }
+  initSetting() {
+    (this.debug = new P(!0)),
+      (this.stats = new z()),
+      document.body.appendChild(this.stats.dom),
+      this.setAxesHelper(10);
+  }
+  initModel() {
+    (this.neoline = new N(this, {
+      curveData: [
+        new i(10, 6),
+        new i(10, -6),
+        new i(-10, -6),
+        new i(-10, 6),
+        new i(10, 6),
+      ],
+      radius1: 0.04,
+      radius2: 0.2,
+      shaderPoints: 20,
+      curvePoints: 100,
+      duration: 3,
+      width: 60,
+      height: 120,
+      color: 16711935,
+      showTestLine: !1,
+    })),
+      this.scene.add(this.neoline);
+  }
+  update() {
+    super.update(), this.stats && this.stats.update();
+  }
+  resize() {
+    super.resize(), this.neoline && this.neoline.resize();
+  }
+  destroy() {
+    super.destroy(),
+      this.neoline && this.neoline.destroy(),
+      this.debug.destroy(),
+      document.body.removeChild(this.stats.dom);
+  }
+}
+const I = { id: "canvas" },
+  D = {
+    __name: "shader10-neonline",
+    setup(c) {
+      let e = null;
+      return (
+        S(() => {
+          e = new U(document.getElementById("canvas"));
+        }),
+        q(() => {
+          e && e.destroy();
+        }),
+        (t, n) => (O(), T("canvas", I))
+      );
+    },
+  },
+  J = b(D, [["__scopeId", "data-v-40d8d097"]]);
+export { J as default };

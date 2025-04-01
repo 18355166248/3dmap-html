@@ -75,13 +75,13 @@ import { l as rt } from "./label-arrow-b5ffbd19.js";
 import { E as it, R as nt, S as st } from "./RenderPass-5ccd0f1e.js";
 import { a as lt } from "./three.interactive-c6512469.js";
 import {
-  f as ct,
-  g as dt,
-  h as ut,
-  o as pt,
-  c as ht,
-  b as R,
-  n as F,
+  reactive,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+  normalizeClass,
 } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const mt = "/sayhello-site/assets/top_surface_normal_map-1d5170e3.jpg",
@@ -2390,13 +2390,13 @@ class Ct extends Fe {
   }
 }
 const Gt = { class: "map-fj" },
-  Dt = R("canvas", { id: "canvas" }, null, -1),
+  Dt = createElementVNode("canvas", { id: "canvas" }, null, -1),
   Tt = { class: "map-btn-group" },
   Zt = {
     __name: "map-animate-fj",
     setup(z) {
       let e = null;
-      const t = ct({
+      const t = reactive({
           bar: !0,
           flyLine: !1,
           scatter: !1,
@@ -2487,77 +2487,77 @@ const Gt = { class: "map-fj" },
                 }));
         };
       return (
-        dt(() => {
+        onMounted(() => {
           e = new Ct(document.getElementById("canvas"), {
             geoProjectionCenter: [118.006468, 26.069925],
           });
         }),
-        ut(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
         (a, o) => (
-          pt(),
-          ht("div", Gt, [
+          openBlock(),
+          createElementBlock("div", Gt, [
             Dt,
-            R("div", Tt, [
-              R(
+            createElementVNode("div", Tt, [
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.bar }]),
+                  class: normalizeClass(["btn", { active: t.bar }]),
                   onClick: o[0] || (o[0] = (n) => r("bar")),
                 },
                 "柱状图",
                 2
               ),
-              R(
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.flyLine }]),
+                  class: normalizeClass(["btn", { active: t.flyLine }]),
                   onClick: o[1] || (o[1] = (n) => r("flyLine")),
                 },
                 "飞线",
                 2
               ),
-              R(
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.scatter }]),
+                  class: normalizeClass(["btn", { active: t.scatter }]),
                   onClick: o[2] || (o[2] = (n) => r("scatter")),
                 },
                 "散点图",
                 2
               ),
-              R(
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.card }]),
+                  class: normalizeClass(["btn", { active: t.card }]),
                   onClick: o[3] || (o[3] = (n) => r("card")),
                 },
                 "标牌",
                 2
               ),
-              R(
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.particle }]),
+                  class: normalizeClass(["btn", { active: t.particle }]),
                   onClick: o[4] || (o[4] = (n) => r("particle")),
                 },
                 "粒子特效",
                 2
               ),
-              R(
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.path }]),
+                  class: normalizeClass(["btn", { active: t.path }]),
                   onClick: o[5] || (o[5] = (n) => r("path")),
                 },
                 "路径轨迹",
                 2
               ),
-              R(
+              createElementVNode(
                 "div",
                 {
-                  class: F(["btn", { active: t.mirror }]),
+                  class: normalizeClass(["btn", { active: t.mirror }]),
                   onClick: o[6] || (o[6] = (n) => r("mirror")),
                 },
                 "倒影",

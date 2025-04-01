@@ -14,7 +14,12 @@ import { D as w } from "./index-4ec0cc76.js";
 import { g as m } from "./index-4db78ffb.js";
 import { s as z } from "./stats.module-077ce25d.js";
 import { _ as M } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as b, h as C, o as P, c as S } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const N = `uniform float u_progress;
 void main() {
@@ -254,13 +259,13 @@ const F = { id: "canvas" },
     setup(l) {
       let e = null;
       return (
-        b(() => {
+        onMounted(() => {
           e = new B(document.getElementById("canvas"));
         }),
-        C(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (t, s) => (P(), S("canvas", F))
+        (t, s) => (openBlock(), createElementBlock("canvas", F))
       );
     },
   },

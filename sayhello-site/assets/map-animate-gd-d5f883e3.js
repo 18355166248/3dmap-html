@@ -58,7 +58,13 @@ import { L as Me, a as Se } from "./Line2-7598ed88.js";
 import { l as E } from "./label-icon-aa0c6fbf.js";
 import { E as Le, R as Pe, S as _e } from "./RenderPass-5ccd0f1e.js";
 import { a as Ge } from "./three.interactive-c6512469.js";
-import { g as Be, h as Oe, o as Ae, c as Ee, b as _ } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class ze {
   constructor(t = null) {
@@ -1717,7 +1723,7 @@ class Fe extends de {
   }
 }
 const qe = { class: "map-gd" },
-  je = _("canvas", { id: "canvas" }, null, -1),
+  je = createElementVNode("canvas", { id: "canvas" }, null, -1),
   Ue = {
     ref: "video1",
     class: "map-gd-video map-gd-video1",
@@ -1728,7 +1734,7 @@ const qe = { class: "map-gd" },
     playsinline: "",
     style: { display: "none" },
   },
-  ke = _("source", { src: $ }, null, -1),
+  ke = createElementVNode("source", { src: $ }, null, -1),
   Ve = [ke],
   $e = {
     ref: "video2",
@@ -1740,24 +1746,28 @@ const qe = { class: "map-gd" },
     playsinline: "",
     style: { display: "none" },
   },
-  He = _("source", { src: H }, null, -1),
+  He = createElementVNode("source", { src: H }, null, -1),
   Xe = [He],
   ft = {
     __name: "map-animate-gd",
     setup(C) {
       let t = null;
       return (
-        Be(() => {
+        onMounted(() => {
           t = new Fe(document.getElementById("canvas"), {
             geoProjectionCenter: [113.280637, 23.125178],
           });
         }),
-        Oe(() => {
+        onBeforeUnmount(() => {
           t && t.destroy();
         }),
         (a, r) => (
-          Ae(),
-          Ee("div", qe, [je, _("video", Ue, Ve, 512), _("video", $e, Xe, 512)])
+          openBlock(),
+          createElementBlock("div", qe, [
+            je,
+            createElementVNode("video", Ue, Ve, 512),
+            createElementVNode("video", $e, Xe, 512),
+          ])
         )
       );
     },

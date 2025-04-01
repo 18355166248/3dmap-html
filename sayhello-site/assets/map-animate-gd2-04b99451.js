@@ -72,13 +72,13 @@ import { l as _ } from "./label-icon-aa0c6fbf.js";
 import { a as He } from "./three.interactive-c6512469.js";
 import { h as Q } from "./heatmap.min-eb3a4a51.js";
 import {
-  f as Xe,
-  g as Qe,
-  h as We,
-  o as Ye,
-  c as Je,
-  b as P,
-  n as O,
+  reactive,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+  normalizeClass,
 } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class Ze {
@@ -2097,7 +2097,7 @@ class it extends Se {
   }
 }
 const rt = { class: "map-gd" },
-  ot = P("canvas", { id: "canvas" }, null, -1),
+  ot = createElementVNode("canvas", { id: "canvas" }, null, -1),
   st = {
     ref: "video1",
     class: "map-gd-video map-gd-video1",
@@ -2108,7 +2108,7 @@ const rt = { class: "map-gd" },
     playsinline: "",
     style: { display: "none" },
   },
-  lt = P("source", { src: ae }, null, -1),
+  lt = createElementVNode("source", { src: ae }, null, -1),
   ct = [lt],
   dt = {
     ref: "video2",
@@ -2120,14 +2120,14 @@ const rt = { class: "map-gd" },
     playsinline: "",
     style: { display: "none" },
   },
-  ut = P("source", { src: ne }, null, -1),
+  ut = createElementVNode("source", { src: ne }, null, -1),
   ht = [ut],
   pt = { class: "map-btn-group" },
   jt = {
     __name: "map-animate-gd2",
     setup(C) {
       let t = null;
-      const a = Xe({
+      const a = reactive({
           flyLine: !1,
           scatter: !1,
           particle: !1,
@@ -2151,52 +2151,52 @@ const rt = { class: "map-gd" },
                   t.infoLabelElement.map((n) => n.hide())));
         };
       return (
-        Qe(() => {
+        onMounted(() => {
           t = new it(document.getElementById("canvas"), {
             geoProjectionCenter: [113.280637, 23.125178],
           });
         }),
-        We(() => {
+        onBeforeUnmount(() => {
           t && t.destroy();
         }),
         (e, n) => (
-          Ye(),
-          Je("div", rt, [
+          openBlock(),
+          createElementBlock("div", rt, [
             ot,
-            P("video", st, ct, 512),
-            P("video", dt, ht, 512),
-            P("div", pt, [
-              P(
+            createElementVNode("video", st, ct, 512),
+            createElementVNode("video", dt, ht, 512),
+            createElementVNode("div", pt, [
+              createElementVNode(
                 "div",
                 {
-                  class: O(["btn", { active: a.flyLine }]),
+                  class: normalizeClass(["btn", { active: a.flyLine }]),
                   onClick: n[0] || (n[0] = (r) => i("flyLine")),
                 },
                 " 飞线 ",
                 2
               ),
-              P(
+              createElementVNode(
                 "div",
                 {
-                  class: O(["btn", { active: a.scatter }]),
+                  class: normalizeClass(["btn", { active: a.scatter }]),
                   onClick: n[1] || (n[1] = (r) => i("scatter")),
                 },
                 " 散点图 ",
                 2
               ),
-              P(
+              createElementVNode(
                 "div",
                 {
-                  class: O(["btn", { active: a.info }]),
+                  class: normalizeClass(["btn", { active: a.info }]),
                   onClick: n[2] || (n[2] = (r) => i("info")),
                 },
                 " 重点点位 ",
                 2
               ),
-              P(
+              createElementVNode(
                 "div",
                 {
-                  class: O(["btn", { active: a.particle }]),
+                  class: normalizeClass(["btn", { active: a.particle }]),
                   onClick: n[3] || (n[3] = (r) => i("particle")),
                 },
                 " 粒子特效 ",

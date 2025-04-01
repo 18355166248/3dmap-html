@@ -32,13 +32,7 @@ import {
   E as bt,
 } from "./RenderPass-5ccd0f1e.js";
 import { g as _t } from "./index-4db78ffb.js";
-import {
-  k as xt,
-  g as wt,
-  h as Mt,
-  o as St,
-  c as Et,
-} from "./index-9ee60282.js";
+import { k as xt, g as wt, h as Mt, o as St, c as Et } from "./index-main.js";
 import { _ as Tt } from "./_plugin-vue_export-helper-c27b6911.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const It = {

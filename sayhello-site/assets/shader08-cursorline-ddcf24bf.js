@@ -14,7 +14,7 @@ import { M as U } from "./index-1453e2ee.js";
 import { D as X } from "./index-4ec0cc76.js";
 import { s as Y } from "./stats.module-077ce25d.js";
 import { _ as H } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as N, h as V, o as W, c as G } from "./index-9ee60282.js";
+import { g as N, h as V, o as W, c as G } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 function K(q) {
   const {

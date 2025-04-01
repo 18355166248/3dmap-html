@@ -14,7 +14,7 @@ import { D as _ } from "./index-4ec0cc76.js";
 import { g } from "./index-4db78ffb.js";
 import { s as w } from "./stats.module-077ce25d.js";
 import { _ as b } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as y, h as v, o as x, c as M } from "./index-9ee60282.js";
+import { g as y, h as v, o as x, c as M } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class S extends f {
   constructor(e) {

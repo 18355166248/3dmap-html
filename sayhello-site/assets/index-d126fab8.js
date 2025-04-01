@@ -11,7 +11,7 @@ import {
   d as f,
   w as h,
   e as k,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 const v = { class: "home-list" },
   g = {
     __name: "index",

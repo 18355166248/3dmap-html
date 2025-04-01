@@ -79,7 +79,7 @@ import {
   c as Je,
   b as P,
   n as O,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class Ze {
   constructor(t = null) {

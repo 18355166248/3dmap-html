@@ -10,7 +10,7 @@ import { M as v } from "./index-1453e2ee.js";
 import { D as p } from "./index-4ec0cc76.js";
 import { s as m } from "./stats.module-077ce25d.js";
 import { _ as f } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as h, h as u, o as g, c as w } from "./index-9ee60282.js";
+import { g as h, h as u, o as g, c as w } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const y = `// varying float vRandom;\r
 // void main() {\r

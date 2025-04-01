@@ -14,7 +14,7 @@ import { g as M } from "./utils-9af1928d.js";
 import { D as C } from "./index-4ec0cc76.js";
 import { s as z } from "./stats.module-077ce25d.js";
 import { A, B as G, L as l } from "./line-0fbbd871.js";
-import { g as U, h as S, o as D, c as E, b as H } from "./index-9ee60282.js";
+import { g as U, h as S, o as D, c as E, b as H } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./chinaBlurLine-b7b06be6.js";
 import "./ocean-bg-19f8644c.js";

@@ -58,13 +58,7 @@ import { L as Me, a as Se } from "./Line2-7598ed88.js";
 import { l as E } from "./label-icon-aa0c6fbf.js";
 import { E as Le, R as Pe, S as _e } from "./RenderPass-5ccd0f1e.js";
 import { a as Ge } from "./three.interactive-c6512469.js";
-import {
-  g as Be,
-  h as Oe,
-  o as Ae,
-  c as Ee,
-  b as _,
-} from "./index-9ee60282.js";
+import { g as Be, h as Oe, o as Ae, c as Ee, b as _ } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class ze {
   constructor(t = null) {

@@ -11,7 +11,7 @@ import { s as u } from "./stats.module-077ce25d.js";
 import { g as h } from "./grid-3e023ca8.js";
 import { u as x } from "./uv-77714551.js";
 import { _ as g } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as y, h as _, o as b, c as z } from "./index-9ee60282.js";
+import { g as y, h as _, o as b, c as z } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const S = `uniform vec3 iResolution;           // viewport resolution (in pixels)\r
 uniform float iTime;                 // shader playback time (in seconds)\r

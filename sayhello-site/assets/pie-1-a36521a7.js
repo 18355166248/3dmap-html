@@ -1,6 +1,6 @@
 import { T as o } from "./pie-22bbf70e.js";
 import { _ as t } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as r, h as n, o as a, c as s } from "./index-9ee60282.js";
+import { g as r, h as n, o as a, c as s } from "./index-main.js";
 import "./OrbitControls-9c9ee6bc.js";
 import "./stats.module-077ce25d.js";
 import "./lil-gui.module.min-f00c3c61.js";

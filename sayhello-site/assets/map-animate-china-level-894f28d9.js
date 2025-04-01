@@ -92,7 +92,7 @@ import {
   c as bt,
   b as B,
   n as R,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class xt {
   constructor() {

@@ -33,7 +33,7 @@ import {
 import { R as F } from "./RippleCirle-e198a9fe.js";
 import { s as j } from "./stats.module-077ce25d.js";
 import { _ as q } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as W, h as H, o as X, c as J } from "./index-9ee60282.js";
+import { g as W, h as H, o as X, c as J } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./index-4db78ffb.js";
 const K = "/sayhello-site/assets/earth_atmos_2048-2faa400d.jpg",

@@ -61,7 +61,7 @@ import {
   c as Ie,
   b as L,
   n as E,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./chinaBlurLine-b7b06be6.js";
 import "./ocean-blue-bg-49e3ac50.js";

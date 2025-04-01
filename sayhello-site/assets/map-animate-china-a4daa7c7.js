@@ -82,7 +82,7 @@ import {
   c as dt,
   b as N,
   n as z,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 class ut {
   constructor(e = null) {
     (this.onLoadCallback = e), this.init();

@@ -82,7 +82,7 @@ import {
   c as ht,
   b as R,
   n as F,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const mt = "/sayhello-site/assets/top_surface_normal_map-1d5170e3.jpg",
   ft = "/sayhello-site/assets/rotationBorder3-c279b059.png",

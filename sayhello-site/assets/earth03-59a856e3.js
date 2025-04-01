@@ -84,7 +84,7 @@ import {
   p as rt,
   i as nt,
   b as st,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class ot {
   constructor({

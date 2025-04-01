@@ -14,7 +14,7 @@ import { D as w } from "./index-4ec0cc76.js";
 import { g as m } from "./index-4db78ffb.js";
 import { s as z } from "./stats.module-077ce25d.js";
 import { _ as M } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as b, h as C, o as P, c as S } from "./index-9ee60282.js";
+import { g as b, h as C, o as P, c as S } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const N = `uniform float u_progress;
 void main() {

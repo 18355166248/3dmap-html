@@ -36,13 +36,7 @@ import { A as ae, B as I, L as A } from "./line-0fbbd871.js";
 import { t as ne, g as re } from "./utils-9af1928d.js";
 import { l as N } from "./label-icon-aa0c6fbf.js";
 import { E as oe, R as ie, S as se } from "./RenderPass-5ccd0f1e.js";
-import {
-  g as le,
-  h as ce,
-  o as de,
-  c as he,
-  b as _,
-} from "./index-9ee60282.js";
+import { g as le, h as ce, o as de, c as he, b as _ } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./chinaBlurLine-b7b06be6.js";
 import "./ocean-bg-19f8644c.js";

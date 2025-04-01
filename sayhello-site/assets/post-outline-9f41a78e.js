@@ -32,7 +32,7 @@ import {
   K as m,
 } from "./index-5b3afbff.js";
 import { _ as N } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as W, h as X, o as Y, c as $ } from "./index-9ee60282.js";
+import { g as W, h as X, o as Y, c as $ } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const q = "/sayhello-site/assets/negx-ce932018.png",
   J = "/sayhello-site/assets/negy-7a6f562a.png",

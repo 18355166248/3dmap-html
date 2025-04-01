@@ -21,7 +21,7 @@ import {
   p as T,
   i as V,
   b as W,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 class j extends G {
   constructor(e) {
     super(e), this.camera.instance.position.set(0, 0, 300), this.initModel();

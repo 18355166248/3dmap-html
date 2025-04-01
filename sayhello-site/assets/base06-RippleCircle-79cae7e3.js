@@ -2,7 +2,7 @@ import { V as c } from "./OrbitControls-9c9ee6bc.js";
 import { M as a } from "./index-1453e2ee.js";
 import { R as s } from "./RippleCirle-e198a9fe.js";
 import { _ as l } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as i, h as p, o as u, c as d } from "./index-9ee60282.js";
+import { g as i, h as p, o as u, c as d } from "./index-main.js";
 class _ extends a {
   constructor(e) {
     super(e), this.camera.instance.position.set(0, 0, 300), this.initModel();

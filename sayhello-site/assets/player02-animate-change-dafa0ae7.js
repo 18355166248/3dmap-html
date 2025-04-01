@@ -26,7 +26,7 @@ import {
   b as c,
   p as W,
   i as D,
-} from "./index-9ee60282.js";
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./SimplePeople_FireFighter_Black-4e915471.js";
 import "./negz-6d72d730.js";

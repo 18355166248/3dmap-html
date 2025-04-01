@@ -29,7 +29,7 @@ import {
   d as k,
 } from "./negz-6d72d730.js";
 import { _ as A } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as F, h as N, o as O, c as I } from "./index-9ee60282.js";
+import { g as F, h as N, o as O, c as I } from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class D {
   constructor(e = {}) {

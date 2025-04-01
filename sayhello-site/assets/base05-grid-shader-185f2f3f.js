@@ -4,7 +4,12 @@ import { D as o } from "./index-4ec0cc76.js";
 import { G as a } from "./Grid-77f5dd1e.js";
 import { s as r } from "./stats.module-077ce25d.js";
 import { _ as n } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as d, h as c, o as p, c as m } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class h extends i {
   constructor(e) {
@@ -55,13 +60,13 @@ const u = { id: "canvas" },
     setup(t) {
       let e = null;
       return (
-        d(() => {
+        onMounted(() => {
           e = new h(document.getElementById("canvas"));
         }),
-        c(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (l, f) => (p(), m("canvas", u))
+        (l, f) => (openBlock(), createElementBlock("canvas", u))
       );
     },
   },

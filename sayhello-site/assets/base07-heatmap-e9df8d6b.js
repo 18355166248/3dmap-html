@@ -14,13 +14,13 @@ import { m as k, a as z } from "./utils-9af1928d.js";
 import { h as A } from "./heatmap.min-eb3a4a51.js";
 import { _ as C } from "./_plugin-vue_export-helper-c27b6911.js";
 import {
-  g as U,
-  h as X,
-  o as F,
-  c as N,
-  p as T,
-  i as V,
-  b as W,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  pushScopeId,
+  popScopeId,
+  createElementVNode,
 } from "./index-main.js";
 class j extends G {
   constructor(e) {
@@ -75,22 +75,22 @@ class j extends G {
     super.destroy();
   }
 }
-const q = (a) => (T("data-v-8a122ed9"), (a = a()), V(), a),
+const q = (a) => (pushScopeId("data-v-8a122ed9"), (a = a()), popScopeId(), a),
   J = { class: "heatmap" },
-  K = q(() => W("canvas", { id: "canvas" }, null, -1)),
+  K = q(() => createElementVNode("canvas", { id: "canvas" }, null, -1)),
   L = [K],
   O = {
     __name: "base07-heatmap",
     setup(a) {
       let e = null;
       return (
-        U(() => {
+        onMounted(() => {
           e = new j(document.getElementById("canvas"));
         }),
-        X(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (o, i) => (F(), N("div", J, L))
+        (o, i) => (openBlock(), createElementBlock("div", J, L))
       );
     },
   },

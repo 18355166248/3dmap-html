@@ -18,7 +18,12 @@ import { M as te, R as ae } from "./index-1453e2ee.js";
 import { D as re } from "./index-4ec0cc76.js";
 import { s as oe } from "./stats.module-077ce25d.js";
 import { _ as se } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as ne, h as ie, o as le, c as de } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class he extends $ {
   constructor(a) {
@@ -385,13 +390,13 @@ const ge = { id: "canvas" },
     setup(T) {
       let a = null;
       return (
-        ne(() => {
+        onMounted(() => {
           a = new me(document.getElementById("canvas"));
         }),
-        ie(() => {
+        onBeforeUnmount(() => {
           a && a.destroy(), console.log("destroy");
         }),
-        (d, y) => (le(), de("canvas", ge))
+        (d, y) => (openBlock(), createElementBlock("canvas", ge))
       );
     },
   },

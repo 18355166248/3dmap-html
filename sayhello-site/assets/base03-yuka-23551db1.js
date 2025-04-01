@@ -12,7 +12,12 @@ import { M as u, N as _ } from "./index-1453e2ee.js";
 import { D as w } from "./index-4ec0cc76.js";
 import { s as g } from "./stats.module-077ce25d.js";
 import { _ as v } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as y, h as M, o as b, c as x } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class S extends u {
   constructor(e) {
@@ -81,13 +86,13 @@ const k = { id: "canvas" },
     setup(i) {
       let e = null;
       return (
-        y(() => {
+        onMounted(() => {
           e = new S(document.getElementById("canvas"));
         }),
-        M(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (t, a) => (b(), x("canvas", k))
+        (t, a) => (openBlock(), createElementBlock("canvas", k))
       );
     },
   },

@@ -1,6 +1,5 @@
 import * as Vue from "./vue-cdn.js";
 import * as VueRouter from "./vue-router.esm-browser.js";
-console.log("🚀 ~ Vue:", Vue);
 
 (function () {
   const t = document.createElement("link").relList;
@@ -1235,53 +1234,12 @@ let Ro = null,
     { path: "/three-3d-map-china-level", name: "chinaMapLevel", component: uu },
     { path: "/:pathMatch(.*)", redirect: "/" },
   ];
-Ro = VueRouter.createRouter({ history: VueRouter.createWebHashHistory(), routes: fu });
-const au = Ro,
-  du = "/sayhello-site/assets/qrcode-42ca0273.png",
-  hu = "/sayhello-site/assets/qrcode-szxs-be3deddd.png";
+Ro = VueRouter.createRouter({
+  history: VueRouter.createWebHashHistory(),
+  routes: fu,
+});
+const au = Ro;
 const pu = { class: "root-app" },
-  mu = Vue.createElementVNode("span", null, "购买", -1),
-  _u = Vue.createElementVNode("span", null, "源码", -1),
-  gu = [mu, _u],
-  vu = { key: 0, class: "buy-btn" },
-  Eu = Vue.createElementVNode("span", null, "购买", -1),
-  yu = Vue.createElementVNode("span", null, "源码", -1),
-  bu = [Eu, yu],
-  wu = {
-    key: 1,
-    class: "icon",
-    width: "16",
-    height: "16",
-    viewBox: "0 0 16 16",
-    fill: "none",
-    xmlns: "http://www.w3.org/2000/svg",
-  },
-  Ru = Vue.createElementVNode(
-    "path",
-    {
-      d: "M13.1297 15.999V14.5494H11.6483V16L13.1297 15.999ZM15.3406 16C15.7033 16 16 15.7033 16 15.3407V14.5494H14.5802V15.999M5.80224 1.45056V5.80225H1.45055V1.45056H5.80224ZM6.59345 0H0.659334C0.296707 0 0 0.296708 0 0.659336V6.59345C0 6.9561 0.296707 7.25279 0.659334 7.25279H6.59343C6.95606 7.25279 7.25277 6.95608 7.25277 6.59345V0.659336C7.25279 0.296708 6.95608 0 6.59345 0ZM2.90113 3.62642C2.90113 3.81877 2.97754 4.00325 3.11356 4.13927C3.24957 4.27528 3.43405 4.3517 3.62641 4.3517C3.81876 4.3517 4.00324 4.27528 4.13925 4.13927C4.27527 4.00325 4.35168 3.81877 4.35168 3.62642C4.35168 3.43406 4.27527 3.24958 4.13925 3.11357C4.00324 2.97755 3.81876 2.90114 3.62641 2.90114C3.43405 2.90114 3.24957 2.97755 3.11356 3.11357C2.97754 3.24958 2.90113 3.43406 2.90113 3.62642ZM14.5494 1.45056V5.80225H10.1978V1.45056H14.5494ZM15.3406 0H9.40654C9.0439 0 8.74721 0.296708 8.74721 0.659336V6.59345C8.74721 6.9561 9.04392 7.25279 9.40654 7.25279H15.3406C15.7033 7.25279 16 6.95608 16 6.59345V0.659336C16 0.296708 15.7033 0 15.3406 0ZM11.6483 3.62642C11.6483 3.81877 11.7247 4.00325 11.8607 4.13927C11.9968 4.27528 12.1812 4.3517 12.3736 4.3517C12.5659 4.3517 12.7504 4.27528 12.8864 4.13927C13.0225 4.00325 13.0989 3.81877 13.0989 3.62642C13.0989 3.43406 13.0225 3.24958 12.8864 3.11357C12.7504 2.97755 12.5659 2.90114 12.3736 2.90114C12.1812 2.90114 11.9968 2.97755 11.8607 3.11357C11.7247 3.24958 11.6483 3.43406 11.6483 3.62642ZM5.80224 10.1977V14.5494H1.45055V10.1977H5.80224ZM6.59345 8.74719H0.659334C0.296707 8.74719 0 9.0439 0 9.40653V15.3406C0 15.7033 0.296707 16 0.659334 16H6.59343C6.95608 16 7.25277 15.7033 7.25277 15.3406V9.40653C7.25279 9.0439 6.95608 8.74719 6.59345 8.74719ZM2.90113 12.3736C2.90113 12.5659 2.97754 12.7504 3.11356 12.8864C3.24957 13.0224 3.43405 13.0989 3.62641 13.0989C3.81876 13.0989 4.00324 13.0224 4.13925 12.8864C4.27527 12.7504 4.35168 12.5659 4.35168 12.3736C4.35168 12.1812 4.27527 11.9968 4.13925 11.8607C4.00324 11.7247 3.81876 11.6483 3.62641 11.6483C3.43405 11.6483 3.24957 11.7247 3.11356 11.8607C2.97754 11.9968 2.90113 12.1812 2.90113 12.3736ZM15.3406 8.74719H14.5319V11.6483H13.0814V8.74719H9.40654C9.0439 8.74719 8.74721 9.0439 8.74721 9.40653V15.3406C8.74721 15.7033 9.04392 16 9.40654 16H10.1978V14.5494V13.0989V11.6483H11.6483V13.0989H16V9.40653C16 9.0439 15.7033 8.74719 15.3406 8.74719Z",
-      fill: "#999",
-    },
-    null,
-    -1
-  ),
-  xu = [Ru],
-  Pu = { class: "qrcode-fixed-card" },
-  Cu = { key: 0, class: "qrcode-pic", src: du, alt: "" },
-  Ou = { key: 1, class: "qrcode-pic", src: hu, alt: "" },
-  Au = Vue.createElementVNode(
-    "div",
-    { class: "content-us" },
-    [
-      Vue.createElementVNode("p", { class: "title" }, "Three.js 3d前端特效"),
-      Vue.createElementVNode("p", { class: "desc" }, [
-        Vue.createElementVNode("span", null, "承接数据可视化前端制作/源码出售"),
-        Vue.createElementVNode("span", null, "欢迎咨询合作"),
-      ]),
-      Vue.createElementVNode("p", { class: "tips" }, "微信扫码，联系我们"),
-    ],
-    -1
-  ),
   Tu = {
     __name: "App",
     setup(e) {
@@ -1307,43 +1265,6 @@ const pu = { class: "root-app" },
             n.isHover = !1;
           }, 2e3));
       }
-      function c() {
-        {
-          (document.oncontextmenu = function () {
-            event.returnValue = !1;
-          }),
-            (document.onkeydown =
-              document.onkeyup =
-              document.onkeypress =
-                function (h) {
-                  let m =
-                    h || window.event || arguments.callee.caller.arguments[0];
-                  if (m && m.keyCode == 123) return (m.returnValue = !1), !1;
-                });
-          var f = new Image();
-          Object.defineProperty(f, "id", {
-            get: function () {
-              window.location.href = "https://www.baidu.com";
-            },
-          });
-          // console.log(f),
-          // setInterval(function () {
-          //   d();
-          // }, 2e3);
-          // var d = function () {
-          //   function h(m) {
-          //     ("" + m / m).length !== 1 || m % 20 === 0
-          //       ? function () {}.constructor("debugger")()
-          //       : function () {}.constructor("debugger")(),
-          //       h(++m);
-          //   }
-          //   try {
-          //     h(0);
-          //   } catch {}
-          // };
-          // d();
-        }
-      }
       function l() {
         ["guangdongMap", "zhejiangMap"].includes(n.routeName)
           ? window.open(r.provice, "_blank")
@@ -1352,63 +1273,18 @@ const pu = { class: "root-app" },
       }
       return (
         Vue.onMounted(() => {
-          c(),
-            setTimeout(() => {
-              (n.isHover = !0),
-                (t = setTimeout(() => {
-                  n.isHover = !1;
-                }, 2e3));
-            }, 500);
+          setTimeout(() => {
+            (n.isHover = !0),
+              (t = setTimeout(() => {
+                n.isHover = !1;
+              }, 2e3));
+          }, 500);
         }),
         (f, d) => {
           const h = Vue.resolveComponent("router-view");
           return (
             Vue.openBlock(),
-            Vue.createElementBlock("div", pu, [
-              Vue.createVNode(h),
-              Vue.unref(n).mode
-                ? (Vue.openBlock(),
-                  Vue.createElementBlock(
-                    "div",
-                    { key: 0, class: "goods-buy-btn", onClick: l },
-                    gu
-                  ))
-                : Vue.createCommentVNode("", !0),
-              Vue.createElementVNode(
-                "div",
-                {
-                  class: Vue.normalizeClass([
-                    "qrcode-fixed",
-                    { active: Vue.unref(n).isHover },
-                  ]),
-                },
-                [
-                  Vue.createElementVNode(
-                    "div",
-                    {
-                      class: "qrcode-fixed-btn",
-                      onMouseenter: o,
-                      onMouseleave: i,
-                    },
-                    [
-                      Vue.unref(n).mode
-                        ? (Vue.openBlock(),
-                          Vue.createElementBlock("svg", wu, xu))
-                        : (Vue.openBlock(),
-                          Vue.createElementBlock("div", vu, bu)),
-                    ],
-                    32
-                  ),
-                  Vue.createElementVNode("div", Pu, [
-                    Vue.unref(n).mode
-                      ? (Vue.openBlock(), Vue.createElementBlock("img", Ou))
-                      : (Vue.openBlock(), Vue.createElementBlock("img", Cu)),
-                    Au,
-                  ]),
-                ],
-                2
-              ),
-            ])
+            Vue.createElementBlock("div", pu, [Vue.createVNode(h)])
           );
         }
       );

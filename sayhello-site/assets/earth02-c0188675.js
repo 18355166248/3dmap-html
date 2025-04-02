@@ -38,7 +38,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./index-4db78ffb.js";
 const K = "/sayhello-site/assets/earth_atmos_2048-2faa400d.jpg",

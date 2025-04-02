@@ -43,7 +43,7 @@ import {
   u as v,
   p as ee,
   i as te,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const ie = "/sayhello-site/assets/SuzanneModel-b2e855de.glb",
   se = "/sayhello-site/assets/HuoJianModel-8b394a47.glb",

@@ -19,7 +19,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const N = `uniform float u_progress;
 void main() {

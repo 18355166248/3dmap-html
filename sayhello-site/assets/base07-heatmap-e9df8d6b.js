@@ -21,7 +21,7 @@ import {
   pushScopeId,
   popScopeId,
   createElementVNode,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 class j extends G {
   constructor(e) {
     super(e), this.camera.instance.position.set(0, 0, 300), this.initModel();

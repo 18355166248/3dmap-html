@@ -7,7 +7,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 class _ extends a {
   constructor(e) {
     super(e), this.camera.instance.position.set(0, 0, 300), this.initModel();

@@ -92,7 +92,7 @@ import {
   createElementBlock,
   createElementVNode,
   normalizeClass,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class xt {
   constructor() {
@@ -2733,7 +2733,11 @@ const Ct = { class: "map-level" },
           openBlock(),
           createElementBlock("div", Ct, [
             Tt,
-            createElementVNode("div", { class: "return-btn", onClick: s }, "返回上一级"),
+            createElementVNode(
+              "div",
+              { class: "return-btn", onClick: s },
+              "返回上一级"
+            ),
             createElementVNode("div", Bt, [
               createElementVNode(
                 "div",

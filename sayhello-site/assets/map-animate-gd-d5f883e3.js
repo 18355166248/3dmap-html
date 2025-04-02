@@ -64,7 +64,7 @@ import {
   openBlock,
   createElementBlock,
   createElementVNode,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class ze {
   constructor(t = null) {

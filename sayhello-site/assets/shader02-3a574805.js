@@ -16,7 +16,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const b = `uniform sampler2D uTexture;\r
 varying vec2 vUv;\r

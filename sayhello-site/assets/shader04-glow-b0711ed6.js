@@ -15,7 +15,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const y = `// varying float vRandom;\r
 // void main() {\r

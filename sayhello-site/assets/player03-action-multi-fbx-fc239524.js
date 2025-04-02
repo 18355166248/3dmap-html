@@ -27,7 +27,7 @@ import {
   p as B,
   i as D,
   b as F,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./SimplePeople_FireFighter_Black-4e915471.js";
 import "./negz-6d72d730.js";

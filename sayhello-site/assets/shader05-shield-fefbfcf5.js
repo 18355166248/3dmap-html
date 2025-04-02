@@ -16,7 +16,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const S = `uniform vec3 iResolution;           // viewport resolution (in pixels)\r
 uniform float iTime;                 // shader playback time (in seconds)\r

@@ -39,7 +39,7 @@ import {
   R as U,
 } from "./index-5b3afbff.js";
 import { _ as V } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as W, h as X, o as Y, c as $ } from "./index-main.js";
+import { g as W, h as X, o as Y, c as $ } from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const c = new p();
 class q extends C {

@@ -38,7 +38,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import { _ as Tt } from "./_plugin-vue_export-helper-c27b6911.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const It = {

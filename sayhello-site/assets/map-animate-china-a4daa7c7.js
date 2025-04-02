@@ -82,7 +82,7 @@ import {
   createElementBlock,
   createElementVNode,
   normalizeClass,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 class ut {
   constructor(e = null) {
     (this.onLoadCallback = e), this.init();

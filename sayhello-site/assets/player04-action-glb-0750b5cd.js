@@ -35,7 +35,7 @@ import {
   p as j,
   i as E,
   b as F,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const H = "/sayhello-site/assets/animateAll-4e451c6f.glb";
 class z {

@@ -5,7 +5,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./OrbitControls-9c9ee6bc.js";
 import "./stats.module-077ce25d.js";
 import "./lil-gui.module.min-f00c3c61.js";

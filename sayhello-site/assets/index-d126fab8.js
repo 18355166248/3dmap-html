@@ -11,7 +11,7 @@ import {
   createBlock,
   withCtx,
   createTextVNode,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 const v = { class: "home-list" },
   g = {
     __name: "index",

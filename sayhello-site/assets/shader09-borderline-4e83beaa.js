@@ -20,7 +20,7 @@ import {
   onBeforeUnmount,
   openBlock,
   createElementBlock,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const j = `varying vec2 vUv;\r
 // #define POINT_COUNT 20\r

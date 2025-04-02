@@ -42,7 +42,7 @@ import {
   openBlock,
   createElementBlock,
   createElementVNode,
-} from "./index-main.js";
+} from "./vue-cdn.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./chinaBlurLine-b7b06be6.js";
 import "./ocean-bg-19f8644c.js";

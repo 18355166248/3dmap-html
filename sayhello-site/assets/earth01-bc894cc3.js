@@ -1,5 +1,5 @@
 import { _ as e } from "./_plugin-vue_export-helper-c27b6911.js";
-import { openBlock, createElementBlock } from "./index-main.js";
+import { openBlock, createElementBlock } from "./vue-cdn.js";
 const c = { id: "canvas" },
   a = {
     __name: "earth01",

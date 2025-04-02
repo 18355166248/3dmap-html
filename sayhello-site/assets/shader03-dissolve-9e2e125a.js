@@ -32,7 +32,13 @@ import {
   E as bt,
 } from "./RenderPass-5ccd0f1e.js";
 import { g as _t } from "./index-4db78ffb.js";
-import { k as xt, g as wt, h as Mt, o as St, c as Et } from "./index-main.js";
+import {
+  ref,
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import { _ as Tt } from "./_plugin-vue_export-helper-c27b6911.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const It = {
@@ -4293,7 +4299,7 @@ class kr extends ct {
     });
   }
   initModel() {
-    const r = xt("box"),
+    const r = ref("box"),
       u = { obj: "box" };
     let l = new qe(this, { baseMaterial: new ve({ color: 16777215 }) }),
       i = new st(2, 2, 2);
@@ -4377,13 +4383,13 @@ const Hr = { id: "canvas" },
     setup(d) {
       let r = null;
       return (
-        wt(() => {
+        onMounted(() => {
           r = new kr(document.getElementById("canvas"));
         }),
-        Mt(() => {
+        onBeforeUnmount(() => {
           r && r.destroy();
         }),
-        (u, l) => (St(), Et("canvas", Hr))
+        (u, l) => (openBlock(), createElementBlock("canvas", Hr))
       );
     },
   },

@@ -36,7 +36,13 @@ import { A as ae, B as I, L as A } from "./line-0fbbd871.js";
 import { t as ne, g as re } from "./utils-9af1928d.js";
 import { l as N } from "./label-icon-aa0c6fbf.js";
 import { E as oe, R as ie, S as se } from "./RenderPass-5ccd0f1e.js";
-import { g as le, h as ce, o as de, c as he, b as _ } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./chinaBlurLine-b7b06be6.js";
 import "./ocean-bg-19f8644c.js";
@@ -1129,7 +1135,7 @@ class ye extends J {
   }
 }
 const be = { class: "map-gd" },
-  xe = _("canvas", { id: "canvas" }, null, -1),
+  xe = createElementVNode("canvas", { id: "canvas" }, null, -1),
   Ce = {
     ref: "video1",
     class: "map-gd-video map-gd-video1",
@@ -1140,7 +1146,7 @@ const be = { class: "map-gd" },
     playsinline: "",
     style: { display: "none" },
   },
-  Se = _("source", { src: ue, type: "video/mp4" }, null, -1),
+  Se = createElementVNode("source", { src: ue, type: "video/mp4" }, null, -1),
   _e = [Se],
   Pe = {
     ref: "video2",
@@ -1152,22 +1158,26 @@ const be = { class: "map-gd" },
     playsinline: "",
     style: { display: "none" },
   },
-  Me = _("source", { src: pe, type: "video/mp4" }, null, -1),
+  Me = createElementVNode("source", { src: pe, type: "video/mp4" }, null, -1),
   Le = [Me],
   qe = {
     __name: "map-gd",
     setup(b) {
       let e = null;
       return (
-        le(() => {
+        onMounted(() => {
           e = new ye(document.getElementById("canvas"));
         }),
-        ce(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
         (a, n) => (
-          de(),
-          he("div", be, [xe, _("video", Ce, _e, 512), _("video", Pe, Le, 512)])
+          openBlock(),
+          createElementBlock("div", be, [
+            xe,
+            createElementVNode("video", Ce, _e, 512),
+            createElementVNode("video", Pe, Le, 512),
+          ])
         )
       );
     },

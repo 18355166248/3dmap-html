@@ -29,7 +29,13 @@ import { h as J, r as W, g as $, a as K } from "./rotationBorder1-447bf02a.js";
 import { r as Q } from "./rotationBorder2-a143eae0.js";
 import { u as Z } from "./uv-77714551.js";
 import { L as ee, a as te } from "./Line2-7598ed88.js";
-import { g as ne, h as ie, o as se, c as ae, b as oe } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 class re {
   constructor(e = null) {
@@ -357,20 +363,20 @@ class de extends H {
   }
 }
 const he = { class: "map-gd" },
-  le = oe("canvas", { id: "canvas" }, null, -1),
+  le = createElementVNode("canvas", { id: "canvas" }, null, -1),
   pe = [le],
   Me = {
     __name: "map-animate-uv",
     setup(u) {
       let e = null;
       return (
-        ne(() => {
+        onMounted(() => {
           e = new de(document.getElementById("canvas"));
         }),
-        ie(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (t, s) => (se(), ae("div", he, pe))
+        (t, s) => (openBlock(), createElementBlock("div", he, pe))
       );
     },
   };

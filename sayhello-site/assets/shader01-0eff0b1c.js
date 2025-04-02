@@ -10,7 +10,12 @@ import { M as f } from "./index-1453e2ee.js";
 import { D as h } from "./index-4ec0cc76.js";
 import { s as _ } from "./stats.module-077ce25d.js";
 import { _ as y } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g as x, h as g, o as P, c as M } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const b = `// precision mediump float;\r
 varying float vRandom;\r
@@ -93,13 +98,13 @@ const R = { id: "canvas" },
     setup(r) {
       let e = null;
       return (
-        x(() => {
+        onMounted(() => {
           e = new F(document.getElementById("canvas"));
         }),
-        g(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (n, i) => (P(), M("canvas", R))
+        (n, i) => (openBlock(), createElementBlock("canvas", R))
       );
     },
   },

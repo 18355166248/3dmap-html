@@ -11,7 +11,12 @@ import { D as h } from "./index-4ec0cc76.js";
 import { s as f } from "./stats.module-077ce25d.js";
 import { f as y } from "./flag-5ab43538.js";
 import { _ } from "./_plugin-vue_export-helper-c27b6911.js";
-import { g, h as x, o as w, c as P } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 const b = `uniform sampler2D uTexture;\r
 varying vec2 vUv;\r
@@ -109,13 +114,13 @@ const T = { id: "canvas" },
     setup(r) {
       let e = null;
       return (
-        g(() => {
+        onMounted(() => {
           e = new F(document.getElementById("canvas"));
         }),
-        x(() => {
+        onBeforeUnmount(() => {
           e && e.destroy();
         }),
-        (o, t) => (w(), P("canvas", T))
+        (o, t) => (openBlock(), createElementBlock("canvas", T))
       );
     },
   },

@@ -14,7 +14,13 @@ import { g as M } from "./utils-9af1928d.js";
 import { D as C } from "./index-4ec0cc76.js";
 import { s as z } from "./stats.module-077ce25d.js";
 import { A, B as G, L as l } from "./line-0fbbd871.js";
-import { g as U, h as S, o as D, c as E, b as H } from "./index-main.js";
+import {
+  onMounted,
+  onBeforeUnmount,
+  openBlock,
+  createElementBlock,
+  createElementVNode,
+} from "./index-main.js";
 import "./lil-gui.module.min-f00c3c61.js";
 import "./chinaBlurLine-b7b06be6.js";
 import "./ocean-bg-19f8644c.js";
@@ -190,20 +196,20 @@ class X extends L {
   }
 }
 const Y = { class: "map-gd" },
-  k = H("canvas", { id: "canvas" }, null, -1),
+  k = createElementVNode("canvas", { id: "canvas" }, null, -1),
   N = [k],
   j = {
     __name: "map-uv",
     setup(u) {
       let t = null;
       return (
-        U(() => {
+        onMounted(() => {
           t = new X(document.getElementById("canvas"));
         }),
-        S(() => {
+        onBeforeUnmount(() => {
           t && t.destroy();
         }),
-        (e, s) => (D(), E("div", Y, N))
+        (e, s) => (openBlock(), createElementBlock("div", Y, N))
       );
     },
   };

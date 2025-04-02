@@ -1,37 +1,37 @@
 import { _ as Q, a as Y } from "./animate2-2f11d126.js";
 import {
-  g as Z,
-  C as I,
-  G as P,
-  A as J,
-  h as K,
-  i as ee,
-  P as te,
-  j as ae,
-  c as D,
-  L as A,
-  V as y,
-  d as j,
-  D as z,
-  R as w,
-  M as b,
-  k as ie,
-  b as M,
-  l as S,
-  m as B,
-  n as G,
-  N as se,
-  o as ne,
-  Q as oe,
-  T as re,
-  p as k,
-  q as $,
-  r as q,
-  B as le,
-  s as ce,
-  t as de,
-  u as pe,
-} from "./OrbitControls-9c9ee6bc.js";
+  Fog,
+  Color,
+  Group,
+  AmbientLight,
+  DirectionalLight,
+  DirectionalLightHelper,
+  PointLight,
+  PointLightHelper,
+  MeshLambertMaterial,
+  LineBasicMaterial,
+  Vector3,
+  MeshStandardMaterial,
+  DoubleSide,
+  RepeatWrapping,
+  MeshBasicMaterial,
+  BoxGeometry,
+  Mesh,
+  PlaneGeometry,
+  SRGBColorSpace,
+  AdditiveBlending,
+  NearestFilter,
+  VideoTexture,
+  QuadraticBezierCurve3,
+  TubeGeometry as TubeGeometry,
+  PointsMaterial,
+  SpriteMaterial,
+  Sprite,
+  BufferGeometry,
+  Float32BufferAttribute,
+  Points,
+  Texture,
+} from "./three.module.js";
 import { M as he } from "./index-1453e2ee.js";
 import { g as ue, m as fe, a as me } from "./utils-9af1928d.js";
 import { D as ge } from "./index-4ec0cc76.js";
@@ -83,8 +83,8 @@ class Be extends he {
       (this.flyLineCenter = [119.476498, 29.898918]),
       (this.depth = 0.5),
       (this.clicked = !1),
-      (this.scene.fog = new Z(1058614, 1, 50)),
-      (this.scene.background = new I(1058614)),
+      (this.scene.fog = new Fog(1058614, 1, 50)),
+      (this.scene.background = new Color(1058614)),
       this.camera.instance.position.set(
         -13.767695123014105,
         12.990152163077308,
@@ -98,7 +98,7 @@ class Be extends he {
         this.camera.instance,
         this.canvas
       )),
-      (this.labelGroup = new P()),
+      (this.labelGroup = new Group()),
       (this.label3d = new ye(this)),
       this.labelGroup.rotateX(-Math.PI / 2),
       (this.eventElement = []),
@@ -291,9 +291,9 @@ class Be extends he {
       }));
   }
   initEnvironment() {
-    let t = new J(16777215, 5);
+    let t = new AmbientLight(16777215, 5);
     this.scene.add(t);
-    let a = new K(16777215, 5);
+    let a = new DirectionalLight(16777215, 5);
     if (
       (a.position.set(-30, 6, -8),
       (a.castShadow = !0),
@@ -303,7 +303,7 @@ class Be extends he {
       this.scene.add(a),
       this.debug.active)
     ) {
-      let s = new ee(a, 2);
+      let s = new DirectionalLightHelper(a, 2);
       this.scene.add(s);
       const e = this.debug.instance.addFolder("Environment");
       e.add(a.position, "x", -30, 30, 1),
@@ -333,9 +333,9 @@ class Be extends he {
       });
   }
   createPointLight(t) {
-    const a = new te(1924702, t.intensity, t.distance, 1);
+    const a = new PointLight(1924702, t.intensity, t.distance, 1);
     if ((a.position.set(t.x, t.y, t.z), this.scene.add(a), this.debug.active)) {
-      const s = new ae(a, 1);
+      const s = new PointLightHelper(a, 1);
       this.scene.add(s);
       const e = this.debug.instance.addFolder("Point" + Math.random());
       e.addColor(t, "color"),
@@ -345,7 +345,7 @@ class Be extends he {
         e.add(t, "y", -30, 30, 1),
         e.add(t, "z", -30, 30, 1),
         e.onChange(({ object: i }) => {
-          (a.color = new I(i.color)),
+          (a.color = new Color(i.color)),
             (a.distance = i.distance),
             (a.intensity = i.intensity),
             a.position.set(i.x, i.y, i.z),
@@ -359,8 +359,8 @@ class Be extends he {
       this.renderer.resize();
   }
   createModel() {
-    let t = new P();
-    this.focusMapGroup = new P();
+    let t = new Group();
+    this.focusMapGroup = new Group();
     let { china: a, chinaTopLine: s, chinaBottomLine: e } = this.createChina(),
       { zhejiang: i, zhejiangTop: r, guangdonLine: c } = this.createProvince();
     a.setParent(t),
@@ -383,21 +383,29 @@ class Be extends he {
         data: t,
         center: this.pointCenter,
         merge: !1,
-        material: new D({ color: 1387591, transparent: !0, opacity: 1 }),
+        material: new MeshLambertMaterial({
+          color: 1387591,
+          transparent: !0,
+          opacity: 1,
+        }),
         renderOrder: 2,
       }),
       s = new T(this, {
         center: this.pointCenter,
         visibelProvince: "广东省",
         data: t,
-        material: new A({ color: 4162253 }),
+        material: new LineBasicMaterial({ color: 4162253 }),
         renderOrder: 3,
       });
     s.lineGroup.position.z += 0.01;
     let e = new T(this, {
       center: this.pointCenter,
       data: t,
-      material: new A({ color: 4162253, transparent: !0, opacity: 0.4 }),
+      material: new LineBasicMaterial({
+        color: 4162253,
+        transparent: !0,
+        opacity: 0.4,
+      }),
       renderOrder: 3,
     });
     return (
@@ -411,14 +419,18 @@ class Be extends he {
     (this.focusMapTopMaterial = a), (this.focusMapSideMaterial = s);
     let e = new we(this, {
         center: this.pointCenter,
-        position: new y(0, 0, 0.11),
+        position: new Vector3(0, 0, 0.11),
         data: t,
         depth: 0.5,
         topFaceMaterial: a,
         sideMaterial: s,
         renderOrder: 9,
       }),
-      i = new j({ color: 16777215, transparent: !0, opacity: 0.5 });
+      i = new MeshStandardMaterial({
+        color: 16777215,
+        transparent: !0,
+        opacity: 0.5,
+      });
     new N(i, { uColor1: 2780818, uColor2: 1058614 }),
       (this.defaultMaterial = i),
       (this.defaultLightMaterial = this.defaultMaterial.clone()),
@@ -426,7 +438,7 @@ class Be extends he {
       (this.defaultLightMaterial.emissiveIntensity = 3.5);
     let r = new H(this, {
       center: this.pointCenter,
-      position: new y(0, 0, 0.72),
+      position: new Vector3(0, 0, 0.72),
       data: t,
       material: i,
       renderOrder: 2,
@@ -436,7 +448,7 @@ class Be extends he {
         l.type === "Mesh" && this.eventElement.push(l);
       });
     }),
-      (this.zhejiangLineMaterial = new A({
+      (this.zhejiangLineMaterial = new LineBasicMaterial({
         color: 16777215,
         opacity: 0,
         transparent: !0,
@@ -454,18 +466,18 @@ class Be extends he {
     );
   }
   createProvinceMaterial() {
-    let t = new D({
+    let t = new MeshLambertMaterial({
       color: 16777215,
       transparent: !0,
       opacity: 0,
       fog: !1,
-      side: z,
+      side: DoubleSide,
     });
     t.onBeforeCompile = (e) => {
       (e.uniforms = {
         ...e.uniforms,
-        uColor1: { value: new I(2780818) },
-        uColor2: { value: new I(1058614) },
+        uColor1: { value: new Color(2780818) },
+        uColor2: { value: new Color(1058614) },
       }),
         (e.vertexShader = e.vertexShader.replace(
           "void main() {",
@@ -513,8 +525,17 @@ class Be extends he {
         ));
     };
     let a = this.assets.instance.getResource("side");
-    (a.wrapS = w), (a.wrapT = w), a.repeat.set(1, 1.5), (a.offset.y += 0.065);
-    let s = new j({ color: 16777215, map: a, fog: !1, opacity: 0, side: z });
+    (a.wrapS = RepeatWrapping),
+      (a.wrapT = RepeatWrapping),
+      a.repeat.set(1, 1.5),
+      (a.offset.y += 0.065);
+    let s = new MeshStandardMaterial({
+      color: 16777215,
+      map: a,
+      fog: !1,
+      opacity: 0,
+      side: DoubleSide,
+    });
     return (
       this.time.on("tick", () => {
         a.offset.y += 0.005;
@@ -522,8 +543,8 @@ class Be extends he {
       (s.onBeforeCompile = (e) => {
         (e.uniforms = {
           ...e.uniforms,
-          uColor1: { value: new I(2780818) },
-          uColor2: { value: new I(2780818) },
+          uColor1: { value: new Color(2780818) },
+          uColor2: { value: new Color(2780818) },
         }),
           (e.vertexShader = e.vertexShader.replace(
             "void main() {",
@@ -587,7 +608,7 @@ class Be extends he {
         e.addEventListener("mousedown", (i) => {
           if (this.clicked) return !1;
           this.clicked = !0;
-          let r = new y();
+          let r = new Vector3();
           i.target.getWorldPosition(r),
             console.log(r),
             this.camera.instance.position.copy(r);
@@ -613,7 +634,7 @@ class Be extends he {
   createBar() {
     let t = this,
       a = F(W).filter((o, l) => l < 7);
-    const s = new P(),
+    const s = new Group(),
       e = 0.7,
       i = 4 * e,
       r = a[0].value;
@@ -623,7 +644,7 @@ class Be extends he {
       (this.allProvinceLabel = []),
       a.map((o, l) => {
         let p = i * (o.value / r),
-          n = new b({
+          n = new MeshBasicMaterial({
             color: 16777215,
             transparent: !0,
             opacity: 0,
@@ -636,17 +657,17 @@ class Be extends he {
           size: p,
           dir: "y",
         });
-        const h = new ie(0.1 * e, 0.1 * e, p);
+        const h = new BoxGeometry(0.1 * e, 0.1 * e, p);
         h.translate(0, 0, p / 2);
-        const f = new M(h, n);
+        const f = new Mesh(h, n);
         f.renderOrder = 5;
         let d = f,
           [v, m] = this.geoProjection(o.centroid);
         d.position.set(v, -m, 0.95), d.scale.set(1, 1, 0);
-        let g = this.createQuan(new y(v, 0.94, m), l),
+        let g = this.createQuan(new Vector3(v, 0.94, m), l),
           x = this.createHUIGUANG(p, l > 3 ? 16776948 : 7863285);
         d.add(...x), s.add(d), (s.rotation.x = -Math.PI / 2);
-        let C = c(o, l, new y(v, -m, 1.6 + p));
+        let C = c(o, l, new Vector3(v, -m, 1.6 + p));
         this.allBar.push(d),
           this.allBarMaterial.push(n),
           this.allGuangquan.push(g),
@@ -678,20 +699,22 @@ class Be extends he {
     }
   }
   createHUIGUANG(t, a) {
-    let s = new S(0.35, t);
+    let s = new PlaneGeometry(0.35, t);
     s.translate(0, t / 2, 0);
     const e = this.assets.instance.getResource("huiguang");
-    (e.colorSpace = B), (e.wrapS = w), (e.wrapT = w);
-    let i = new b({
+    (e.colorSpace = SRGBColorSpace),
+      (e.wrapS = RepeatWrapping),
+      (e.wrapT = RepeatWrapping);
+    let i = new MeshBasicMaterial({
         color: a,
         map: e,
         transparent: !0,
         opacity: 0.4,
         depthWrite: !1,
-        side: z,
-        blending: G,
+        side: DoubleSide,
+        blending: AdditiveBlending,
       }),
-      r = new M(s, i);
+      r = new Mesh(s, i);
     (r.renderOrder = 10), r.rotateX(Math.PI / 2);
     let c = r.clone(),
       o = r.clone();
@@ -704,8 +727,8 @@ class Be extends he {
   createQuan(t, a) {
     const s = this.assets.instance.getResource("guangquan1"),
       e = this.assets.instance.getResource("guangquan2");
-    let i = new S(0.5, 0.5),
-      r = new b({
+    let i = new PlaneGeometry(0.5, 0.5),
+      r = new MeshBasicMaterial({
         color: 16777215,
         map: s,
         alphaMap: s,
@@ -713,9 +736,9 @@ class Be extends he {
         transparent: !0,
         depthTest: !1,
         fog: !1,
-        blending: G,
+        blending: AdditiveBlending,
       }),
-      c = new b({
+      c = new MeshBasicMaterial({
         color: 16777215,
         map: e,
         alphaMap: e,
@@ -723,10 +746,10 @@ class Be extends he {
         transparent: !0,
         depthTest: !1,
         fog: !1,
-        blending: G,
+        blending: AdditiveBlending,
       }),
-      o = new M(i, r),
-      l = new M(i, c);
+      o = new Mesh(i, r),
+      l = new Mesh(i, c);
     return (
       (o.renderOrder = 6),
       (l.renderOrder = 6),
@@ -737,7 +760,7 @@ class Be extends he {
       (l.position.y -= 0.001),
       o.scale.set(0, 0, 0),
       l.scale.set(0, 0, 0),
-      (this.quanGroup = new P()),
+      (this.quanGroup = new Group()),
       this.quanGroup.add(o, l),
       this.scene.add(this.quanGroup),
       this.time.on("tick", () => {
@@ -761,29 +784,32 @@ class Be extends he {
     });
   }
   createFloor() {
-    let t = new S(20, 20);
+    let t = new PlaneGeometry(20, 20);
     const a = this.assets.instance.getResource("ocean");
-    (a.colorSpace = B), (a.wrapS = w), (a.wrapT = w), a.repeat.set(1, 1);
-    let s = new b({ map: a, opacity: 1 }),
-      e = new M(t, s);
+    (a.colorSpace = SRGBColorSpace),
+      (a.wrapS = RepeatWrapping),
+      (a.wrapT = RepeatWrapping),
+      a.repeat.set(1, 1);
+    let s = new MeshBasicMaterial({ map: a, opacity: 1 }),
+      e = new Mesh(t, s);
     e.rotateX(-Math.PI / 2), e.position.set(0, -0.7, 0), this.scene.add(e);
   }
   createChinaBlurLine() {
-    let t = new S(147, 147);
+    let t = new PlaneGeometry(147, 147);
     const a = this.assets.instance.getResource("chinaBlurLine");
-    (a.colorSpace = B),
-      (a.wrapS = w),
-      (a.wrapT = w),
+    (a.colorSpace = SRGBColorSpace),
+      (a.wrapS = RepeatWrapping),
+      (a.wrapT = RepeatWrapping),
       (a.generateMipmaps = !1),
-      (a.minFilter = se),
+      (a.minFilter = NearestFilter),
       a.repeat.set(1, 1);
-    let s = new b({
+    let s = new MeshBasicMaterial({
         color: 4162253,
         alphaMap: a,
         transparent: !0,
         opacity: 0.5,
       }),
-      e = new M(t, s);
+      e = new Mesh(t, s);
     if (
       (e.rotateX(-Math.PI / 2),
       e.position.set(-33.2, -0.5, -5.2),
@@ -797,26 +823,26 @@ class Be extends he {
     }
   }
   createAnimateVideo() {
-    this.createAnimateVideoItem(".map-gd-video1", new y(11, 0.4, 1)),
-      this.createAnimateVideoItem(".map-gd-video2", new y(-11, 0.4, 2));
+    this.createAnimateVideoItem(".map-gd-video1", new Vector3(11, 0.4, 1)),
+      this.createAnimateVideoItem(".map-gd-video2", new Vector3(-11, 0.4, 2));
   }
   createAnimateVideoItem(t, a) {
     let s = document.querySelector(t);
     window.addEventListener("pointerdown", () => {
       s.play();
     });
-    let e = new ne(s);
-    e.colorSpace = B;
+    let e = new VideoTexture(s);
+    e.colorSpace = SRGBColorSpace;
     let i = 1.2,
-      r = new S(2.5 * i, 1 * i),
-      c = new b({
+      r = new PlaneGeometry(2.5 * i, 1 * i),
+      c = new MeshBasicMaterial({
         color: 10807286,
         alphaMap: e,
         transparent: !0,
         opacity: 1,
-        blending: G,
+        blending: AdditiveBlending,
       }),
-      o = new M(r, c);
+      o = new Mesh(r, c);
     o.rotateX(-Math.PI / 2),
       o.position.copy(a),
       (o.renderOrder = 10),
@@ -870,7 +896,7 @@ class Be extends he {
       return (
         d.init(
           `<div class="other-label"><img class="label-icon" src="${O}">${n.name}</div>`,
-          new y(v, -m, 0.4)
+          new Vector3(v, -m, 0.4)
         ),
         h.setLabelStyle(d, 0.02, "x"),
         d.setParent(f),
@@ -883,7 +909,7 @@ class Be extends he {
       return (
         d.init(
           `<div class="other-label"><span>${n.name}</span><span>${n.enName}</span></div>`,
-          new y(v, -m, 0.4)
+          new Vector3(v, -m, 0.4)
         ),
         h.setLabelStyle(d, 0.02, "x"),
         d.setParent(f),
@@ -900,7 +926,7 @@ class Be extends he {
       return (
         d.init(
           `<div class="other-label"><img class="label-icon" style="width:${n.width};height:${n.height}" src="${n.icon}">`,
-          new y(v, -m, 0.4)
+          new Vector3(v, -m, 0.4)
         ),
         h.setLabelStyle(d, 0.02, "x"),
         d.setParent(f),
@@ -916,16 +942,16 @@ class Be extends he {
         width: t * 1.178,
         needRotate: !0,
         rotateSpeed: 0.001,
-        material: new b({
+        material: new MeshBasicMaterial({
           map: a,
           color: 4763647,
           transparent: !0,
           opacity: 0.2,
-          side: z,
+          side: DoubleSide,
           depthWrite: !1,
-          blending: G,
+          blending: AdditiveBlending,
         }),
-        position: new y(0, 0.28, 0),
+        position: new Vector3(0, 0.28, 0),
       });
     (e.instance.renderOrder = 6),
       e.instance.scale.set(0, 0, 0),
@@ -934,16 +960,16 @@ class Be extends he {
       width: t * 1.116,
       needRotate: !0,
       rotateSpeed: -0.004,
-      material: new b({
+      material: new MeshBasicMaterial({
         map: s,
         color: 4763647,
         transparent: !0,
         opacity: 0.4,
-        side: z,
+        side: DoubleSide,
         depthWrite: !1,
-        blending: G,
+        blending: AdditiveBlending,
       }),
-      position: new y(0, 0.3, 0),
+      position: new Vector3(0, 0.3, 0),
     });
     (i.instance.renderOrder = 6),
       i.instance.scale.set(0, 0, 0),
@@ -952,18 +978,21 @@ class Be extends he {
       (this.rotateBorder2 = i.instance);
   }
   createFlyLine() {
-    (this.flyLineGroup = new P()),
+    (this.flyLineGroup = new Group()),
       (this.flyLineGroup.visible = !1),
       this.scene.add(this.flyLineGroup);
     const t = this.assets.instance.getResource("flyLine");
-    (t.colorSpace = B), (t.wrapS = w), (t.wrapT = w), t.repeat.set(1, 1);
+    (t.colorSpace = SRGBColorSpace),
+      (t.wrapS = RepeatWrapping),
+      (t.wrapT = RepeatWrapping),
+      t.repeat.set(1, 1);
     const a = 0.03,
       s = 32,
       e = 8,
       i = !1;
     let [r, c] = this.geoProjection(this.flyLineCenter),
-      o = new y(r, -c, 0);
-    const l = new b({
+      o = new Vector3(r, -c, 0);
+    const l = new MeshBasicMaterial({
       map: t,
       alphaMap: t,
       color: 2781042,
@@ -971,19 +1000,19 @@ class Be extends he {
       fog: !1,
       opacity: 1,
       depthTest: !1,
-      blending: G,
+      blending: AdditiveBlending,
     });
     this.time.on("tick", () => {
       t.offset.x -= 0.006;
     }),
       W.filter((p, n) => n < 7).map((p) => {
         let [n, h] = this.geoProjection(p.centroid),
-          f = new y(n, -h, 0);
-        const d = new y();
+          f = new Vector3(n, -h, 0);
+        const d = new Vector3();
         d.addVectors(o, f).multiplyScalar(0.5), d.setZ(3);
-        const v = new oe(o, d, f),
-          m = new re(v, s, a, e, i),
-          g = new M(m, l);
+        const v = new QuadraticBezierCurve3(o, d, f),
+          m = new TubeGeometry(v, s, a, e, i),
+          g = new Mesh(m, l);
         (g.rotation.x = -Math.PI / 2),
           g.position.set(0, 0.94, 0),
           (g.renderOrder = 21),
@@ -992,24 +1021,24 @@ class Be extends he {
       this.createFlyLineFocus();
   }
   createFlyLineFocus() {
-    (this.flyLineFocusGroup = new P()),
+    (this.flyLineFocusGroup = new Group()),
       (this.flyLineFocusGroup.visible = !1),
       (this.flyLineFocusGroup.rotation.x = -Math.PI / 2);
     let [t, a] = this.geoProjection([119.476498, 29.898918]);
     this.flyLineFocusGroup.position.set(t, 0.942, a),
       this.scene.add(this.flyLineFocusGroup);
     const s = this.assets.instance.getResource("flyLineFocus"),
-      e = new S(1, 1),
-      i = new b({
+      e = new PlaneGeometry(1, 1),
+      i = new MeshBasicMaterial({
         color: 16777215,
         map: s,
         alphaMap: s,
         transparent: !0,
         fog: !1,
         depthTest: !1,
-        blending: G,
+        blending: AdditiveBlending,
       }),
-      r = new M(e, i);
+      r = new Mesh(e, i);
     r.scale.set(0, 0, 0);
     const c = r.clone();
     (c.material = i.clone()),
@@ -1046,7 +1075,7 @@ class Be extends he {
       range: 30,
       dir: "up",
       speed: 0.05,
-      material: new k({
+      material: new PointsMaterial({
         map: U.createTexture(),
         size: 1,
         color: 61166,
@@ -1055,7 +1084,7 @@ class Be extends he {
         depthTest: !1,
         depthWrite: !1,
         vertexColors: !0,
-        blending: G,
+        blending: AdditiveBlending,
         sizeAttenuation: !0,
       }),
     })),
@@ -1066,12 +1095,12 @@ class Be extends he {
       (this.particles.instance.visible = !1);
   }
   createScatter() {
-    (this.scatterGroup = new P()),
+    (this.scatterGroup = new Group()),
       (this.scatterGroup.visible = !1),
       (this.scatterGroup.rotation.x = -Math.PI / 2),
       this.scene.add(this.scatterGroup);
     const t = this.assets.instance.getResource("arrow"),
-      a = new $({
+      a = new SpriteMaterial({
         map: t,
         color: 16776948,
         fog: !1,
@@ -1081,7 +1110,7 @@ class Be extends he {
     let s = F(X),
       e = s[0].value;
     s.map((i) => {
-      const r = new q(a);
+      const r = new Sprite(a);
       r.renderOrder = 23;
       let c = 0.1 + (i.value / e) * 0.2;
       r.scale.set(c, c, c);
@@ -1107,10 +1136,10 @@ class Be extends he {
       });
     let i = fe(e, (x) => x.value).value,
       r = me(e, (x) => x.value).value;
-    const c = new le();
-    c.setAttribute("position", new ce(s, 3));
-    const o = new k({ size: 0.2, color: 16777215 });
-    let l = new de(c, o);
+    const c = new BufferGeometry();
+    c.setAttribute("position", new Float32BufferAttribute(s, 3));
+    const o = new PointsMaterial({ size: 0.2, color: 16777215 });
+    let l = new Points(c, o);
     l.rotateX(-Math.PI / 2), this.scene.add(l);
     const p = 3600,
       n = 1800;
@@ -1123,18 +1152,18 @@ class Be extends he {
       alpha: !0,
     });
     f.setData({ max: i, min: r, data: e });
-    let d = new S(p, n),
-      v = new pe(f._renderer.canvas);
-    var m = new b({
+    let d = new PlaneGeometry(p, n),
+      v = new Texture(f._renderer.canvas);
+    var m = new MeshBasicMaterial({
       map: v,
       transparent: !0,
       depthWrite: !1,
-      side: z,
+      side: DoubleSide,
       fog: !1,
       wireframe: !1,
     });
     m.map.needsUpdate = !0;
-    let g = new M(d, m);
+    let g = new Mesh(d, m);
     (g.rotation.x = Math.PI / 2),
       (g.renderOrder = 22),
       g.position.set(p / 100, 0.952, -n / 100),
@@ -1143,7 +1172,7 @@ class Be extends he {
   }
   createInfoPoint() {
     let t = this;
-    (this.InfoPointGroup = new P()),
+    (this.InfoPointGroup = new Group()),
       (this.InfoPointGroup.visible = !1),
       (this.InfoPointGroup.rotation.x = -Math.PI / 2),
       this.scene.add(this.InfoPointGroup),
@@ -1156,14 +1185,14 @@ class Be extends he {
       i = F(Me),
       r = i[0].value;
     i.map((o, l) => {
-      const p = new $({
+      const p = new SpriteMaterial({
           map: s,
           color: e[l % e.length],
           fog: !1,
           transparent: !0,
           depthTest: !1,
         }),
-        n = new q(p);
+        n = new Sprite(p);
       n.renderOrder = 23;
       let h = 0.7 + (o.value / r) * 0.4;
       n.scale.set(h, h, h);
@@ -1222,7 +1251,7 @@ class Be extends he {
         </div>
       </div>
     `,
-          new y(h, -f, 2.4)
+          new Vector3(h, -f, 2.4)
         ),
         l.setLabelStyle(n, 0.015, "x"),
         n.setParent(p),
@@ -1244,13 +1273,13 @@ class Be extends he {
   }
   createWatermark() {
     let t = this.assets.instance.getResource("watermark");
-    (t.wrapS = w),
-      (t.wrapT = w),
+    (t.wrapS = RepeatWrapping),
+      (t.wrapT = RepeatWrapping),
       t.repeat.set(50, 50),
       (t.rotation = Math.PI / 5);
-    let a = new S(100, 100, 1),
-      s = new b({ map: t, transparent: !0, opacity: 0.15 }),
-      e = new M(a, s);
+    let a = new PlaneGeometry(100, 100, 1),
+      s = new MeshBasicMaterial({ map: t, transparent: !0, opacity: 0.15 }),
+      e = new Mesh(a, s);
     (e.position.x -= 10),
       (e.position.y -= 10),
       (e.position.z -= 10),

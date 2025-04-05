@@ -1,4 +1,19 @@
-import{a3 as c,z as l,n as v,a as o,b as m}from"./OrbitControls-9c9ee6bc.js";import{M as p,R as d}from"./index-1453e2ee.js";import{D as f}from"./index-4ec0cc76.js";import{s as u}from"./stats.module-077ce25d.js";import{g as h}from"./grid-3e023ca8.js";import{u as x}from"./uv-77714551.js";import{_ as g}from"./_plugin-vue_export-helper-c27b6911.js";import{g as y,h as _,o as b,c as z}from"./index-d838a7bb.js";import"./lil-gui.module.min-f00c3c61.js";const S=`uniform vec3 iResolution;           // viewport resolution (in pixels)\r
+import {
+  a3 as c,
+  z as l,
+  n as v,
+  a as o,
+  b as m,
+} from "./OrbitControls-9c9ee6bc.js";
+import { M as p, R as d } from "./index-1453e2ee.js";
+import { D as f } from "./index-4ec0cc76.js";
+import { s as u } from "./stats.module-077ce25d.js";
+import { g as h } from "./grid-3e023ca8.js";
+import { u as x } from "./uv-77714551.js";
+import { _ as g } from "./_plugin-vue_export-helper-c27b6911.js";
+import { g as y, h as _, o as b, c as z } from "./index-d838a7bb.js";
+import "./lil-gui.module.min-f00c3c61.js";
+const S = `uniform vec3 iResolution;           // viewport resolution (in pixels)\r
 uniform float iTime;                 // shader playback time (in seconds)\r
 uniform sampler2D iChannel0;\r
 uniform sampler2D iChannel1;\r
@@ -126,7 +141,8 @@ void main() {\r
     float alpha = pow(1.0 - x, 2.0);//透明度随着余弦值非线性变化  比如二次方  三次方 渲染不同的效果\r
     col *= vec3(0.0, 1.0, 1.0);\r
     gl_FragColor = vec4(col, alpha);\r
-}`,w=`// uniform mat4 projectionMatrix;\r
+}`,
+  w = `// uniform mat4 projectionMatrix;\r
 // uniform mat4 viewMatrix;\r
 // uniform mat4 modelMatrix;\r
 \r
@@ -141,4 +157,79 @@ void main() {\r
     vUv = uv;\r
     vNormal = normalize(normalMatrix * normal);\r
 \r
-}`;class k extends p{constructor(r){super(r),this.camera.instance.position.set(31.654053063076066,18.17832104360899,31.654053063096544),this.initSetting(),this.assets=new d({}),this.assets.loadAll([{type:"Texture",name:"grid",path:h},{type:"Texture",name:"uv",path:x}]),this.assets.on("onLoad",()=>{this.initModel()})}initSetting(){this.debug=new f(!0),this.stats=new u,document.body.appendChild(this.stats.dom),this.setAxesHelper(10)}initModel(){const r=new c(10,24,24),n=this.assets.getResource("uv"),t=this.assets.getResource("grid"),e=new l({vertexShader:w,fragmentShader:S,transparent:!0,opacity:1,blending:v,uniforms:{iResolution:{value:new o},iTime:{value:0},iChannel0:{value:n},iChannel1:{value:t}}});e.uniforms.iResolution.value=new o(this.sizes.width,this.sizes.height);let a=new m(r,e);this.scene.add(a),this.time.on("tick",(s,M)=>{e.uniforms.iTime.value+=s})}update(){super.update(),this.stats&&this.stats.update()}destroy(){super.destroy(),this.debug.destroy(),document.body.removeChild(this.stats.dom)}}const j={id:"canvas"},A={__name:"shader05-shield",setup(i){let r=null;return y(()=>{r=new k(document.getElementById("canvas"))}),_(()=>{r&&r.destroy()}),(n,t)=>(b(),z("canvas",j))}},Z=g(A,[["__scopeId","data-v-b060166f"]]);export{Z as default};
+}`;
+class k extends p {
+  constructor(r) {
+    super(r),
+      this.camera.instance.position.set(
+        31.654053063076066,
+        18.17832104360899,
+        31.654053063096544
+      ),
+      this.initSetting(),
+      (this.assets = new d({})),
+      this.assets.loadAll([
+        { type: "Texture", name: "grid", path: h },
+        { type: "Texture", name: "uv", path: x },
+      ]),
+      this.assets.on("onLoad", () => {
+        this.initModel();
+      });
+  }
+  initSetting() {
+    (this.debug = new f(!0)),
+      (this.stats = new u()),
+      document.body.appendChild(this.stats.dom),
+      this.setAxesHelper(10);
+  }
+  initModel() {
+    const r = new c(10, 24, 24),
+      n = this.assets.getResource("uv"),
+      t = this.assets.getResource("grid"),
+      e = new l({
+        vertexShader: w,
+        fragmentShader: S,
+        transparent: !0,
+        opacity: 1,
+        blending: v,
+        uniforms: {
+          iResolution: { value: new o() },
+          iTime: { value: 0 },
+          iChannel0: { value: n },
+          iChannel1: { value: t },
+        },
+      });
+    e.uniforms.iResolution.value = new o(this.sizes.width, this.sizes.height);
+    let a = new m(r, e);
+    this.scene.add(a),
+      this.time.on("tick", (s, M) => {
+        e.uniforms.iTime.value += s;
+      });
+  }
+  update() {
+    super.update(), this.stats && this.stats.update();
+  }
+  destroy() {
+    super.destroy(),
+      this.debug.destroy(),
+      document.body.removeChild(this.stats.dom);
+  }
+}
+const j = { id: "canvas" },
+  A = {
+    __name: "shader05-shield",
+    setup(i) {
+      let r = null;
+      return (
+        y(() => {
+          r = new k(document.getElementById("canvas"));
+        }),
+        _(() => {
+          r && r.destroy();
+        }),
+        (n, t) => (b(), z("canvas", j))
+      );
+    },
+  },
+  Z = g(A, [["__scopeId", "data-v-b060166f"]]);
+export { Z as default };

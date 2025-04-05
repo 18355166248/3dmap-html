@@ -1,4 +1,23 @@
-import{l as b,a as e,C as k,z as P,n as z,b as S,bJ as q,B,L as M,ac as T}from"./OrbitControls-9c9ee6bc.js";import{M as O}from"./index-1453e2ee.js";import{D as N}from"./index-4ec0cc76.js";import{g as U}from"./index-4db78ffb.js";import{s as I}from"./stats.module-077ce25d.js";import{_ as A}from"./_plugin-vue_export-helper-c27b6911.js";import{g as G,h as R,o as D,c as L}from"./index-d838a7bb.js";import"./lil-gui.module.min-f00c3c61.js";const j=`varying vec2 vUv;\r
+import {
+  l as b,
+  a as e,
+  C as k,
+  z as P,
+  n as z,
+  b as S,
+  bJ as q,
+  B,
+  L as M,
+  ac as T,
+} from "./OrbitControls-9c9ee6bc.js";
+import { M as O } from "./index-1453e2ee.js";
+import { D as N } from "./index-4ec0cc76.js";
+import { g as U } from "./index-4db78ffb.js";
+import { s as I } from "./stats.module-077ce25d.js";
+import { _ as A } from "./_plugin-vue_export-helper-c27b6911.js";
+import { g as G, h as R, o as D, c as L } from "./index-d838a7bb.js";
+import "./lil-gui.module.min-f00c3c61.js";
+const j = `varying vec2 vUv;\r
 // #define POINT_COUNT 20\r
 \r
 uniform vec2 uCoords[POINT_COUNT];\r
@@ -107,7 +126,8 @@ void main() {\r
 \r
     //Output to screen\r
     gl_FragColor = vec4(col, 1.0);\r
-}`,E=`\r
+}`,
+  E = `\r
 varying vec2 vUv;\r
 void main() {\r
     vec4 modelPosition = modelMatrix * vec4(position, 1.0);\r
@@ -116,4 +136,120 @@ void main() {\r
     gl_Position = projectionPosition;\r
     vUv = uv;\r
 \r
-}`;class F extends O{constructor(t){super(t),this.camera.instance.position.set(31.654053063076066,18.17832104360899,31.654053063096544),this.initSetting(),this.initModel()}initSetting(){this.debug=new N(!0),this.stats=new I,document.body.appendChild(this.stats.dom),this.setAxesHelper(10)}initModel(){const t=new b(60,120,1),n={radius1:.02,radius2:.2,shaderPoints:20,curvePoints:100,duration:3},d=60,l=120,f={value:new e},h={value:new e},w={value:new k(65535)};let s=new Array(n.shaderPoints).fill(0).map(()=>new e);const o=new P({vertexShader:E,fragmentShader:j,transparent:!0,blending:z,opacity:.2,defines:{POINT_COUNT:n.shaderPoints},uniforms:{uTime:{value:0},uCoords:{value:s},uRatio:f,uSize:h,uColor:w}});let i=new S(t,o);this.scene.add(i);let r=new q([new e(10,6),new e(10,-6),new e(-10,-6),new e(-10,6),new e(10,6)]).getPoints(n.curvePoints);const x=new B().setFromPoints(r),g=new M({color:16711680}),u=()=>{o.uniforms.uSize.value.set(n.radius1,n.radius2),o.uniforms.uRatio.value.set(d/l,1),o.uniforms.uSize.value.multiplyScalar(1/l)};window.addEventListener("resize",()=>{u()}),u();const y=new T(x,g);this.scene.add(y);let _=n.shaderPoints,C=r.length-1;s=s.map((a,c)=>r[c]),r=[...r,...s];let v={index:0};const p=this.debug.instance.addFolder("plane");p.add(i.scale,"x",-2,2,.001),p.add(i.scale,"y",-2,2,.001),U.to(v,{index:C,duration:n.duration,repeat:-1,ease:"none",delay:0,onUpdate:()=>{let a=Math.floor(v.index),c=r.slice(a,a+_);o.uniforms.uCoords.value=c}})}update(){super.update(),this.stats&&this.stats.update()}destroy(){super.destroy(),this.debug.destroy(),document.body.removeChild(this.stats.dom)}}const W={id:"canvas"},H={__name:"shader09-borderline",setup(m){let t=null;return G(()=>{t=new F(document.getElementById("canvas"))}),R(()=>{t&&t.destroy()}),(n,d)=>(D(),L("canvas",W))}},en=A(H,[["__scopeId","data-v-b740a287"]]);export{en as default};
+}`;
+class F extends O {
+  constructor(t) {
+    super(t),
+      this.camera.instance.position.set(
+        31.654053063076066,
+        18.17832104360899,
+        31.654053063096544
+      ),
+      this.initSetting(),
+      this.initModel();
+  }
+  initSetting() {
+    (this.debug = new N(!0)),
+      (this.stats = new I()),
+      document.body.appendChild(this.stats.dom),
+      this.setAxesHelper(10);
+  }
+  initModel() {
+    const t = new b(60, 120, 1),
+      n = {
+        radius1: 0.02,
+        radius2: 0.2,
+        shaderPoints: 20,
+        curvePoints: 100,
+        duration: 3,
+      },
+      d = 60,
+      l = 120,
+      f = { value: new e() },
+      h = { value: new e() },
+      w = { value: new k(65535) };
+    let s = new Array(n.shaderPoints).fill(0).map(() => new e());
+    const o = new P({
+      vertexShader: E,
+      fragmentShader: j,
+      transparent: !0,
+      blending: z,
+      opacity: 0.2,
+      defines: { POINT_COUNT: n.shaderPoints },
+      uniforms: {
+        uTime: { value: 0 },
+        uCoords: { value: s },
+        uRatio: f,
+        uSize: h,
+        uColor: w,
+      },
+    });
+    let i = new S(t, o);
+    this.scene.add(i);
+    let r = new q([
+      new e(10, 6),
+      new e(10, -6),
+      new e(-10, -6),
+      new e(-10, 6),
+      new e(10, 6),
+    ]).getPoints(n.curvePoints);
+    const x = new B().setFromPoints(r),
+      g = new M({ color: 16711680 }),
+      u = () => {
+        o.uniforms.uSize.value.set(n.radius1, n.radius2),
+          o.uniforms.uRatio.value.set(d / l, 1),
+          o.uniforms.uSize.value.multiplyScalar(1 / l);
+      };
+    window.addEventListener("resize", () => {
+      u();
+    }),
+      u();
+    const y = new T(x, g);
+    this.scene.add(y);
+    let _ = n.shaderPoints,
+      C = r.length - 1;
+    (s = s.map((a, c) => r[c])), (r = [...r, ...s]);
+    let v = { index: 0 };
+    const p = this.debug.instance.addFolder("plane");
+    p.add(i.scale, "x", -2, 2, 0.001),
+      p.add(i.scale, "y", -2, 2, 0.001),
+      U.to(v, {
+        index: C,
+        duration: n.duration,
+        repeat: -1,
+        ease: "none",
+        delay: 0,
+        onUpdate: () => {
+          let a = Math.floor(v.index),
+            c = r.slice(a, a + _);
+          o.uniforms.uCoords.value = c;
+        },
+      });
+  }
+  update() {
+    super.update(), this.stats && this.stats.update();
+  }
+  destroy() {
+    super.destroy(),
+      this.debug.destroy(),
+      document.body.removeChild(this.stats.dom);
+  }
+}
+const W = { id: "canvas" },
+  H = {
+    __name: "shader09-borderline",
+    setup(m) {
+      let t = null;
+      return (
+        G(() => {
+          t = new F(document.getElementById("canvas"));
+        }),
+        R(() => {
+          t && t.destroy();
+        }),
+        (n, d) => (D(), L("canvas", W))
+      );
+    },
+  },
+  en = A(H, [["__scopeId", "data-v-b740a287"]]);
+export { en as default };

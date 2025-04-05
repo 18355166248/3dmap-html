@@ -1,7 +1,26 @@
-import{g as p,z as v,D as x,aF as u,a3 as d,b as h,B as y,a2 as _,t as g}from"./OrbitControls-9c9ee6bc.js";import{M as f}from"./index-1453e2ee.js";import{D as w}from"./index-4ec0cc76.js";import{g as m}from"./index-4db78ffb.js";import{s as z}from"./stats.module-077ce25d.js";import{_ as M}from"./_plugin-vue_export-helper-c27b6911.js";import{g as b,h as C,o as P,c as S}from"./index-d838a7bb.js";import"./lil-gui.module.min-f00c3c61.js";const N=`uniform float u_progress;
+import {
+  g as p,
+  z as v,
+  D as x,
+  aF as u,
+  a3 as d,
+  b as h,
+  B as y,
+  a2 as _,
+  t as g,
+} from "./OrbitControls-9c9ee6bc.js";
+import { M as f } from "./index-1453e2ee.js";
+import { D as w } from "./index-4ec0cc76.js";
+import { g as m } from "./index-4db78ffb.js";
+import { s as z } from "./stats.module-077ce25d.js";
+import { _ as M } from "./_plugin-vue_export-helper-c27b6911.js";
+import { g as b, h as C, o as P, c as S } from "./index-d838a7bb.js";
+import "./lil-gui.module.min-f00c3c61.js";
+const N = `uniform float u_progress;
 void main() {
     gl_FragColor = vec4(0.4, 0.4, 0.4, u_progress);
-}`,k=`uniform float u_time;
+}`,
+  k = `uniform float u_time;
 void main() {
     vec3 p = position;
 
@@ -12,7 +31,8 @@ void main() {
     vec4 mvPosition = modelViewMatrix * vec4(p, 1.0);
     gl_PointSize = 10.0 * (1.0 / -mvPosition.z);
     gl_Position = projectionMatrix * mvPosition;
-}`,D=`varying vec2 vUv;
+}`,
+  D = `varying vec2 vUv;
 varying vec3 v_color;
 varying vec3 v_normal;
 
@@ -28,7 +48,8 @@ void main() {
     light = mix(skyColor, groundColor, dot(lightDirection, v_normal));
 
     gl_FragColor = vec4(light * v_color, 1.0);
-}`,j=`varying vec2 vUv;
+}`,
+  j = `varying vec2 vUv;
 varying vec3 v_color;
 varying vec3 v_normal;
 
@@ -126,4 +147,122 @@ void main() {
     v_normal = normal;
 
     gl_Position = projectionMatrix * modelViewMatrix * vec4(newPos, 1.0);
-}`;class B extends f{constructor(e){super(e),this.scene.fog=new p(0,1,100),this.scene.background=0,this.camera.instance.position.set(0,0,10),this.camera.instance.near=.01,this.camera.instance.far=1e3,this.camera.instance.updateProjectionMatrix(),this.initSetting(),this.initModel()}initSetting(){this.debug=new w(!0),this.stats=new z,document.body.appendChild(this.stats.dom)}initModel(){this.init()}init(){this.setup(),this.addToScene(),this.createParticles(),this.animate(),this.time.on("tick",()=>{this.material.uniforms.u_time.value=this.clock.getElapsedTime(),this.pointsMaterial.uniforms.u_time.value=this.clock.getElapsedTime(),this.points.rotation.y+=.005})}setup(){this.material=new v({vertexShader:j,fragmentShader:D,wireframe:!1,uniforms:{u_time:{value:0},u_progress:{value:0}}}),this.pointsMaterial=new v({vertexShader:k,fragmentShader:N,wireframe:!1,side:x,transparent:!0,uniforms:{u_time:{value:0},u_progress:{value:0}}}),this.clock=new u}addToScene(){this.geometry=new d(1,162,162);const e=new h(this.geometry,this.material);this.scene.add(e)}createParticles(){const t=new Float32Array(9e4);this.particleGeometry=new y;let s=Math.PI*(3-Math.sqrt(5)),r=2/3e4,o=2;for(let n=0;n<3e4;n++){let i=n*r-1+r/2,a=Math.sqrt(1-i*i),c=n*s;t[3*n]=o*Math.cos(c)*a,t[3*n+1]=o*i,t[3*n+2]=o*Math.sin(c)*a}this.particleGeometry.setAttribute("position",new _(t,3)),this.points=new g(this.particleGeometry,this.pointsMaterial),this.scene.add(this.points)}animate(){m.timeline({repeat:-1,yoyo:!0}).to(this.material.uniforms.u_progress,{value:5,duration:5,ease:"power3.inOut"}).to(this.material.uniforms.u_progress,{value:1,duration:5,ease:"power3.inOut"}),m.to(this.pointsMaterial.uniforms.u_progress,{value:.4,duration:5,ease:"power3.inOut"})}update(){super.update(),this.stats&&this.stats.update()}destroy(){super.destroy(),this.debug.destroy(),document.body.removeChild(this.stats.dom)}}const F={id:"canvas"},G={__name:"shader06-nosie",setup(l){let e=null;return b(()=>{e=new B(document.getElementById("canvas"))}),C(()=>{e&&e.destroy()}),(t,s)=>(P(),S("canvas",F))}},V=M(G,[["__scopeId","data-v-092787fc"]]);export{V as default};
+}`;
+class B extends f {
+  constructor(e) {
+    super(e),
+      (this.scene.fog = new p(0, 1, 100)),
+      (this.scene.background = 0),
+      this.camera.instance.position.set(0, 0, 10),
+      (this.camera.instance.near = 0.01),
+      (this.camera.instance.far = 1e3),
+      this.camera.instance.updateProjectionMatrix(),
+      this.initSetting(),
+      this.initModel();
+  }
+  initSetting() {
+    (this.debug = new w(!0)),
+      (this.stats = new z()),
+      document.body.appendChild(this.stats.dom);
+  }
+  initModel() {
+    this.init();
+  }
+  init() {
+    this.setup(),
+      this.addToScene(),
+      this.createParticles(),
+      this.animate(),
+      this.time.on("tick", () => {
+        (this.material.uniforms.u_time.value = this.clock.getElapsedTime()),
+          (this.pointsMaterial.uniforms.u_time.value =
+            this.clock.getElapsedTime()),
+          (this.points.rotation.y += 0.005);
+      });
+  }
+  setup() {
+    (this.material = new v({
+      vertexShader: j,
+      fragmentShader: D,
+      wireframe: !1,
+      uniforms: { u_time: { value: 0 }, u_progress: { value: 0 } },
+    })),
+      (this.pointsMaterial = new v({
+        vertexShader: k,
+        fragmentShader: N,
+        wireframe: !1,
+        side: x,
+        transparent: !0,
+        uniforms: { u_time: { value: 0 }, u_progress: { value: 0 } },
+      })),
+      (this.clock = new u());
+  }
+  addToScene() {
+    this.geometry = new d(1, 162, 162);
+    const e = new h(this.geometry, this.material);
+    this.scene.add(e);
+  }
+  createParticles() {
+    const t = new Float32Array(9e4);
+    this.particleGeometry = new y();
+    let s = Math.PI * (3 - Math.sqrt(5)),
+      r = 2 / 3e4,
+      o = 2;
+    for (let n = 0; n < 3e4; n++) {
+      let i = n * r - 1 + r / 2,
+        a = Math.sqrt(1 - i * i),
+        c = n * s;
+      (t[3 * n] = o * Math.cos(c) * a),
+        (t[3 * n + 1] = o * i),
+        (t[3 * n + 2] = o * Math.sin(c) * a);
+    }
+    this.particleGeometry.setAttribute("position", new _(t, 3)),
+      (this.points = new g(this.particleGeometry, this.pointsMaterial)),
+      this.scene.add(this.points);
+  }
+  animate() {
+    m
+      .timeline({ repeat: -1, yoyo: !0 })
+      .to(this.material.uniforms.u_progress, {
+        value: 5,
+        duration: 5,
+        ease: "power3.inOut",
+      })
+      .to(this.material.uniforms.u_progress, {
+        value: 1,
+        duration: 5,
+        ease: "power3.inOut",
+      }),
+      m.to(this.pointsMaterial.uniforms.u_progress, {
+        value: 0.4,
+        duration: 5,
+        ease: "power3.inOut",
+      });
+  }
+  update() {
+    super.update(), this.stats && this.stats.update();
+  }
+  destroy() {
+    super.destroy(),
+      this.debug.destroy(),
+      document.body.removeChild(this.stats.dom);
+  }
+}
+const F = { id: "canvas" },
+  G = {
+    __name: "shader06-nosie",
+    setup(l) {
+      let e = null;
+      return (
+        b(() => {
+          e = new B(document.getElementById("canvas"));
+        }),
+        C(() => {
+          e && e.destroy();
+        }),
+        (t, s) => (P(), S("canvas", F))
+      );
+    },
+  },
+  V = M(G, [["__scopeId", "data-v-092787fc"]]);
+export { V as default };

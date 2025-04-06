@@ -31,7 +31,7 @@ import {
   Points,
   Texture,
 } from "./three.module.js";
-import { M as he } from "./index-1453e2ee.js";
+import { M } from "./index-1453e2ee.js";
 import { g as ue, m as fe, a as me } from "./utils-9af1928d.js";
 import { D as ge } from "./index-4ec0cc76.js";
 import { G as ve } from "./Grid-77f5dd1e.js";
@@ -57,7 +57,7 @@ function F(_) {
   return _.sort((t, a) => a.value - t.value), _;
 }
 
-export class Be extends he {
+export class Be extends M {
   constructor(t, a) {
     super(t, a),
       (this.pointCenter = [120.109913, 29.181466]),
@@ -88,166 +88,177 @@ export class Be extends he {
       this.scene.add(this.labelGroup),
       this.initSetting(),
       (this.assets = new be(() => {
-        this.initEnvironment(),
-          this.createFloor(),
-          this.createChinaBlurLine(),
-          this.createGrid(),
-          this.createRotateBorder(),
-          this.createLabel(),
-          this.createModel(),
-          this.createAnimateVideo(),
-          this.createEvent(),
-          this.createFlyLine(),
-          this.createParticles(),
-          this.createScatter(),
-          this.createInfoPoint();
+        this.initEnvironment();
+        this.createFloor();
+        this.createChinaBlurLine();
+        this.createGrid();
+        this.createRotateBorder();
+        this.createLabel();
+        this.createModel();
+        this.createAnimateVideo();
+        this.createEvent();
+        this.createFlyLine();
+        this.createParticles();
+        this.createScatter();
+        this.createInfoPoint();
         let s = u.timeline();
-        s.addLabel("focusMap", 2),
-          s.addLabel("focusMapOpacity", 2.5),
-          s.addLabel("bar", 3.5),
+        s.addLabel("focusMap", 2);
+        s.addLabel("focusMapOpacity", 2.5);
+        s.addLabel("bar", 3.5);
+        s.add(
+          u.to(this.camera.instance.position, {
+            duration: 2.5,
+            x: -0.2515849818960619,
+            y: 12.397744557047988,
+            z: 14.647659671139275,
+            ease: "circ.out",
+          })
+        );
+        s.add(
+          u.to(this.focusMapGroup.position, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            z: 0,
+          }),
+          "focusMap"
+        );
+        s.add(
+          u.to(this.focusMapGroup.scale, {
+            duration: 1,
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "circ.out",
+          }),
+          "focusMap"
+        );
+        s.add(
+          u.to(this.focusMapTopMaterial, {
+            duration: 1,
+            opacity: 1,
+            ease: "circ.out",
+          }),
+          "focusMapOpacity"
+        );
+        s.add(
+          u.to(this.focusMapSideMaterial, {
+            duration: 1,
+            opacity: 1,
+            ease: "circ.out",
+            onComplete: () => {
+              this.focusMapSideMaterial.transparent = !1;
+            },
+          }),
+          "focusMapOpacity"
+        );
+        this.otherLabel.map((e, i) => {
+          let r = e.element.querySelector(".other-label");
           s.add(
-            u.to(this.camera.instance.position, {
-              duration: 2.5,
-              x: -0.2515849818960619,
-              y: 12.397744557047988,
-              z: 14.647659671139275,
+            u.to(r, {
+              duration: 1,
+              delay: 0.1 * i,
+              translateY: 0,
+              opacity: 1,
               ease: "circ.out",
-            })
-          ),
-          s.add(
-            u.to(this.focusMapGroup.position, {
-              duration: 1,
-              x: 0,
-              y: 0,
-              z: 0,
             }),
-            "focusMap"
-          ),
+            "focusMapOpacity"
+          );
+        });
+        s.add(
+          u.to(this.zhejiangLineMaterial, {
+            duration: 0.5,
+            delay: 0.3,
+            opacity: 1,
+          }),
+          "focusMapOpacity"
+        );
+        s.add(
+          u.to(this.rotateBorder1.scale, {
+            delay: 0.3,
+            duration: 1,
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "circ.out",
+          }),
+          "focusMapOpacity"
+        );
+        s.add(
+          u.to(this.rotateBorder2.scale, {
+            duration: 1,
+            delay: 0.5,
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "circ.out",
+          }),
+          "focusMapOpacity"
+        );
+        this.allBar.map((e, i) => {
           s.add(
-            u.to(this.focusMapGroup.scale, {
+            u.to(e.scale, {
               duration: 1,
+              delay: 0.1 * i,
               x: 1,
               y: 1,
               z: 1,
               ease: "circ.out",
             }),
-            "focusMap"
-          ),
+            "bar"
+          );
+        });
+        this.allBarMaterial.map((e, i) => {
           s.add(
-            u.to(this.focusMapTopMaterial, {
+            u.to(e, {
               duration: 1,
+              delay: 0.1 * i,
               opacity: 1,
               ease: "circ.out",
             }),
-            "focusMapOpacity"
-          ),
+            "bar"
+          );
+        });
+        this.allProvinceLabel.map((e, i) => {
+          let r = e.element.querySelector(".provinces-label-wrap"),
+            c = e.element.querySelector(".number .value"),
+            o = Number(c.innerText),
+            l = { score: 0 };
           s.add(
-            u.to(this.focusMapSideMaterial, {
-              duration: 1,
-              opacity: 1,
-              ease: "circ.out",
-              onComplete: () => {
-                this.focusMapSideMaterial.transparent = !1;
-              },
-            }),
-            "focusMapOpacity"
-          ),
-          this.otherLabel.map((e, i) => {
-            let r = e.element.querySelector(".other-label");
-            s.add(
-              u.to(r, {
-                duration: 1,
-                delay: 0.1 * i,
-                translateY: 0,
-                opacity: 1,
-                ease: "circ.out",
-              }),
-              "focusMapOpacity"
-            );
-          }),
-          s.add(
-            u.to(this.zhejiangLineMaterial, {
-              duration: 0.5,
-              delay: 0.3,
-              opacity: 1,
-            }),
-            "focusMapOpacity"
-          ),
-          s.add(
-            u.to(this.rotateBorder1.scale, {
-              delay: 0.3,
-              duration: 1,
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "circ.out",
-            }),
-            "focusMapOpacity"
-          ),
-          s.add(
-            u.to(this.rotateBorder2.scale, {
-              duration: 1,
-              delay: 0.5,
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "circ.out",
-            }),
-            "focusMapOpacity"
-          ),
-          this.allBar.map((e, i) => {
-            s.add(
-              u.to(e.scale, {
-                duration: 1,
-                delay: 0.1 * i,
-                x: 1,
-                y: 1,
-                z: 1,
-                ease: "circ.out",
-              }),
-              "bar"
-            );
-          }),
-          this.allBarMaterial.map((e, i) => {
-            s.add(
-              u.to(e, {
-                duration: 1,
-                delay: 0.1 * i,
-                opacity: 1,
-                ease: "circ.out",
-              }),
-              "bar"
-            );
-          }),
-          this.allProvinceLabel.map((e, i) => {
-            let r = e.element.querySelector(".provinces-label-wrap"),
-              c = e.element.querySelector(".number .value"),
-              o = Number(c.innerText),
-              l = { score: 0 };
-            s.add(
-              u.to(r, {
-                duration: 1,
-                delay: 0.2 * i,
-                translateY: 0,
-                opacity: 1,
-                ease: "circ.out",
-              }),
-              "bar"
-            );
-            let p = u.to(l, {
+            u.to(r, {
               duration: 1,
               delay: 0.2 * i,
-              score: o,
-              onUpdate: n,
-            });
-            function n() {
-              c.innerText = l.score.toFixed(0);
-            }
-            s.add(p, "bar");
-          }),
-          this.allGuangquan.map((e, i) => {
+              translateY: 0,
+              opacity: 1,
+              ease: "circ.out",
+            }),
+            "bar"
+          );
+          let p = u.to(l, {
+            duration: 1,
+            delay: 0.2 * i,
+            score: o,
+            onUpdate: n,
+          });
+          function n() {
+            c.innerText = l.score.toFixed(0);
+          }
+          s.add(p, "bar");
+        });
+        this.allGuangquan.map((e, i) => {
+          s.add(
+            u.to(e.children[0].scale, {
+              duration: 1,
+              delay: 0.1 * i,
+              x: 1,
+              y: 1,
+              z: 1,
+              ease: "circ.out",
+            }),
+            "bar"
+          ),
             s.add(
-              u.to(e.children[0].scale, {
+              u.to(e.children[1].scale, {
                 duration: 1,
                 delay: 0.1 * i,
                 x: 1,
@@ -256,19 +267,8 @@ export class Be extends he {
                 ease: "circ.out",
               }),
               "bar"
-            ),
-              s.add(
-                u.to(e.children[1].scale, {
-                  duration: 1,
-                  delay: 0.1 * i,
-                  x: 1,
-                  y: 1,
-                  z: 1,
-                  ease: "circ.out",
-                }),
-                "bar"
-              );
-          });
+            );
+        });
       }));
   }
   initEnvironment() {
@@ -335,28 +335,28 @@ export class Be extends he {
     }
   }
   initSetting() {
-    (this.debug = new ge(!1)),
-      (this.renderer.instance.shadowMap.enabled = !1),
-      this.renderer.resize();
+    this.debug = new ge(!1);
+    this.renderer.instance.shadowMap.enabled = !1;
+    this.renderer.resize();
   }
   createModel() {
     let t = new Group();
     this.focusMapGroup = new Group();
     let { china: a, chinaTopLine: s, chinaBottomLine: e } = this.createChina(),
       { zhejiang: i, zhejiangTop: r, guangdonLine: c } = this.createProvince();
-    a.setParent(t),
-      s.setParent(t),
-      console.log(ue(i.mapGroup)),
-      i.setParent(this.focusMapGroup),
-      r.setParent(this.focusMapGroup),
-      c.setParent(this.focusMapGroup),
-      this.focusMapGroup.position.set(0, 0, -0.01),
-      this.focusMapGroup.scale.set(1, 1, 0),
-      t.add(this.focusMapGroup),
-      (t.rotation.x = -Math.PI / 2),
-      t.position.set(0, 0.2, 0),
-      this.scene.add(t),
-      this.createBar();
+    a.setParent(t);
+    s.setParent(t);
+    console.log(ue(i.mapGroup));
+    i.setParent(this.focusMapGroup);
+    r.setParent(this.focusMapGroup);
+    c.setParent(this.focusMapGroup);
+    this.focusMapGroup.position.set(0, 0, -0.01);
+    this.focusMapGroup.scale.set(1, 1, 0);
+    t.add(this.focusMapGroup);
+    t.rotation.x = -Math.PI / 2;
+    t.position.set(0, 0.2, 0);
+    this.scene.add(t);
+    this.createBar();
   }
   createChina() {
     let t = this.assets.instance.getResource("china"),

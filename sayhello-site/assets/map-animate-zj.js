@@ -61,20 +61,20 @@ const ht = {
         info: !1,
       }),
       s = (e) => {
-        (a[e] = !a[e]),
-          e === "particle" &&
-            ((t.particles.enable = a[e]),
-            (t.particles.instance.visible = a[e])),
-          e === "flyLine" &&
-            ((t.flyLineGroup.visible = a[e]),
-            (t.flyLineFocusGroup.visible = a[e])),
-          e === "scatter" && (t.scatterGroup.visible = a[e]),
-          e === "info" &&
-            ((t.InfoPointGroup.visible = a[e]),
-            a[e]
-              ? t.createInfoPointLabelLoop()
-              : (clearInterval(t.infoPointLabelTime),
-                t.infoLabelElement.map((i) => i.hide())));
+        a[e] = !a[e];
+        e === "particle" &&
+          ((t.particles.enable = a[e]), (t.particles.instance.visible = a[e]));
+        e === "flyLine" &&
+          ((t.flyLineGroup.visible = a[e]),
+          (t.flyLineFocusGroup.visible = a[e]));
+        e === "scatter" && (t.scatterGroup.visible = a[e]);
+        if (e === "info") {
+          t.InfoPointGroup.visible = a[e];
+          a[e]
+            ? t.createInfoPointLabelLoop()
+            : (clearInterval(t.infoPointLabelTime),
+              t.infoLabelElement.map((i) => i.hide()));
+        }
       };
     return (
       onMounted(() => {

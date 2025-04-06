@@ -20,7 +20,7 @@ import "./arrow-8777f461.js";
 import "./point1-7bb35866.js";
 import "./Line2-7598ed88.js";
 
-import { Be } from "./map-animate-zj-be.js";
+import { ZheJiangMap } from "./map-animate-zj-be.js";
 
 const _e = { class: "map-gd" };
 const Ee = createElementVNode("canvas", { id: "canvas" }, null, -1);
@@ -78,7 +78,7 @@ const ht = {
       };
     return (
       onMounted(() => {
-        t = new Be(document.getElementById("canvas"), {
+        t = new ZheJiangMap(document.getElementById("canvas"), {
           geoProjectionCenter: [120.109913, 29.181466],
         });
       }),

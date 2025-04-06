@@ -57,197 +57,208 @@ function F(_) {
   return _.sort((t, a) => a.value - t.value), _;
 }
 
-export class Be extends M {
-  constructor(t, a) {
-    super(t, a),
-      (this.pointCenter = [120.109913, 29.181466]),
-      (this.flyLineCenter = [119.476498, 29.898918]),
-      (this.depth = 0.5),
-      (this.clicked = !1),
-      (this.scene.fog = new Fog(1058614, 1, 50)),
-      (this.scene.background = new Color(1058614)),
-      this.camera.instance.position.set(
-        -13.767695123014105,
-        12.990152163077308,
-        39.28228164159694
-      ),
-      (this.camera.instance.near = 1),
-      (this.camera.instance.far = 1e4),
-      this.camera.instance.updateProjectionMatrix(),
-      (this.interactionManager = new Le(
-        this.renderer.instance,
-        this.camera.instance,
-        this.canvas
-      )),
-      (this.labelGroup = new Group()),
-      (this.label3d = new ye(this)),
-      this.labelGroup.rotateX(-Math.PI / 2),
-      (this.eventElement = []),
-      (this.defaultMaterial = null),
-      (this.defaultLightMaterial = null),
-      this.scene.add(this.labelGroup),
-      this.initSetting(),
-      (this.assets = new be(() => {
-        this.initEnvironment();
-        this.createFloor();
-        this.createChinaBlurLine();
-        this.createGrid();
-        this.createRotateBorder();
-        this.createLabel();
-        this.createModel();
-        this.createAnimateVideo();
-        this.createEvent();
-        this.createFlyLine();
-        this.createParticles();
-        this.createScatter();
-        this.createInfoPoint();
-        let s = u.timeline();
-        s.addLabel("focusMap", 2);
-        s.addLabel("focusMapOpacity", 2.5);
-        s.addLabel("bar", 3.5);
+export class ZheJiangMap extends M {
+  constructor(dom, options) {
+    super(dom, options);
+    this.pointCenter = [120.109913, 29.181466];
+    this.flyLineCenter = [119.476498, 29.898918];
+    this.depth = 0.5;
+    this.clicked = !1;
+    this.scene.fog = new Fog(1058614, 1, 50);
+    this.scene.background = new Color(1058614);
+    this.camera.instance.position.set(
+      -13.767695123014105,
+      12.990152163077308,
+      39.28228164159694
+    );
+    this.camera.instance.near = 1;
+    this.camera.instance.far = 1e4;
+    this.camera.instance.updateProjectionMatrix();
+    this.interactionManager = new Le(
+      this.renderer.instance,
+      this.camera.instance,
+      this.canvas
+    );
+    this.labelGroup = new Group();
+    this.label3d = new ye(this);
+    this.labelGroup.rotateX(-Math.PI / 2);
+    this.eventElement = [];
+    this.defaultMaterial = null;
+    this.defaultLightMaterial = null;
+    this.scene.add(this.labelGroup);
+    this.initSetting();
+    this.assets = new be(() => {
+      this.initEnvironment();
+      this.createFloor();
+      this.createChinaBlurLine();
+      this.createGrid();
+      this.createRotateBorder();
+      this.createLabel();
+      this.createModel();
+      this.createAnimateVideo();
+      this.createEvent();
+      this.createFlyLine();
+      this.createParticles();
+      this.createScatter();
+      this.createInfoPoint();
+      let s = u.timeline();
+      s.addLabel("focusMap", 2);
+      s.addLabel("focusMapOpacity", 2.5);
+      s.addLabel("bar", 3.5);
+      s.add(
+        u.to(this.camera.instance.position, {
+          duration: 2.5,
+          x: -0.2515849818960619,
+          y: 12.397744557047988,
+          z: 14.647659671139275,
+          ease: "circ.out",
+        })
+      );
+      s.add(
+        u.to(this.focusMapGroup.position, {
+          duration: 1,
+          x: 0,
+          y: 0,
+          z: 0,
+        }),
+        "focusMap"
+      );
+      s.add(
+        u.to(this.focusMapGroup.scale, {
+          duration: 1,
+          x: 1,
+          y: 1,
+          z: 1,
+          ease: "circ.out",
+        }),
+        "focusMap"
+      );
+      s.add(
+        u.to(this.focusMapTopMaterial, {
+          duration: 1,
+          opacity: 1,
+          ease: "circ.out",
+        }),
+        "focusMapOpacity"
+      );
+      s.add(
+        u.to(this.focusMapSideMaterial, {
+          duration: 1,
+          opacity: 1,
+          ease: "circ.out",
+          onComplete: () => {
+            this.focusMapSideMaterial.transparent = !1;
+          },
+        }),
+        "focusMapOpacity"
+      );
+      this.otherLabel.map((e, i) => {
+        let r = e.element.querySelector(".other-label");
         s.add(
-          u.to(this.camera.instance.position, {
-            duration: 2.5,
-            x: -0.2515849818960619,
-            y: 12.397744557047988,
-            z: 14.647659671139275,
-            ease: "circ.out",
-          })
-        );
-        s.add(
-          u.to(this.focusMapGroup.position, {
+          u.to(r, {
             duration: 1,
-            x: 0,
-            y: 0,
-            z: 0,
-          }),
-          "focusMap"
-        );
-        s.add(
-          u.to(this.focusMapGroup.scale, {
-            duration: 1,
-            x: 1,
-            y: 1,
-            z: 1,
-            ease: "circ.out",
-          }),
-          "focusMap"
-        );
-        s.add(
-          u.to(this.focusMapTopMaterial, {
-            duration: 1,
+            delay: 0.1 * i,
+            translateY: 0,
             opacity: 1,
             ease: "circ.out",
           }),
           "focusMapOpacity"
         );
+      });
+      s.add(
+        u.to(this.zhejiangLineMaterial, {
+          duration: 0.5,
+          delay: 0.3,
+          opacity: 1,
+        }),
+        "focusMapOpacity"
+      );
+      s.add(
+        u.to(this.rotateBorder1.scale, {
+          delay: 0.3,
+          duration: 1,
+          x: 1,
+          y: 1,
+          z: 1,
+          ease: "circ.out",
+        }),
+        "focusMapOpacity"
+      );
+      s.add(
+        u.to(this.rotateBorder2.scale, {
+          duration: 1,
+          delay: 0.5,
+          x: 1,
+          y: 1,
+          z: 1,
+          ease: "circ.out",
+        }),
+        "focusMapOpacity"
+      );
+      this.allBar.map((e, i) => {
         s.add(
-          u.to(this.focusMapSideMaterial, {
+          u.to(e.scale, {
             duration: 1,
-            opacity: 1,
-            ease: "circ.out",
-            onComplete: () => {
-              this.focusMapSideMaterial.transparent = !1;
-            },
-          }),
-          "focusMapOpacity"
-        );
-        this.otherLabel.map((e, i) => {
-          let r = e.element.querySelector(".other-label");
-          s.add(
-            u.to(r, {
-              duration: 1,
-              delay: 0.1 * i,
-              translateY: 0,
-              opacity: 1,
-              ease: "circ.out",
-            }),
-            "focusMapOpacity"
-          );
-        });
-        s.add(
-          u.to(this.zhejiangLineMaterial, {
-            duration: 0.5,
-            delay: 0.3,
-            opacity: 1,
-          }),
-          "focusMapOpacity"
-        );
-        s.add(
-          u.to(this.rotateBorder1.scale, {
-            delay: 0.3,
-            duration: 1,
+            delay: 0.1 * i,
             x: 1,
             y: 1,
             z: 1,
             ease: "circ.out",
           }),
-          "focusMapOpacity"
+          "bar"
         );
+      });
+      this.allBarMaterial.map((e, i) => {
         s.add(
-          u.to(this.rotateBorder2.scale, {
+          u.to(e, {
             duration: 1,
-            delay: 0.5,
-            x: 1,
-            y: 1,
-            z: 1,
+            delay: 0.1 * i,
+            opacity: 1,
             ease: "circ.out",
           }),
-          "focusMapOpacity"
+          "bar"
         );
-        this.allBar.map((e, i) => {
-          s.add(
-            u.to(e.scale, {
-              duration: 1,
-              delay: 0.1 * i,
-              x: 1,
-              y: 1,
-              z: 1,
-              ease: "circ.out",
-            }),
-            "bar"
-          );
-        });
-        this.allBarMaterial.map((e, i) => {
-          s.add(
-            u.to(e, {
-              duration: 1,
-              delay: 0.1 * i,
-              opacity: 1,
-              ease: "circ.out",
-            }),
-            "bar"
-          );
-        });
-        this.allProvinceLabel.map((e, i) => {
-          let r = e.element.querySelector(".provinces-label-wrap"),
-            c = e.element.querySelector(".number .value"),
-            o = Number(c.innerText),
-            l = { score: 0 };
-          s.add(
-            u.to(r, {
-              duration: 1,
-              delay: 0.2 * i,
-              translateY: 0,
-              opacity: 1,
-              ease: "circ.out",
-            }),
-            "bar"
-          );
-          let p = u.to(l, {
+      });
+      this.allProvinceLabel.map((e, i) => {
+        let r = e.element.querySelector(".provinces-label-wrap"),
+          c = e.element.querySelector(".number .value"),
+          o = Number(c.innerText),
+          l = { score: 0 };
+        s.add(
+          u.to(r, {
             duration: 1,
             delay: 0.2 * i,
-            score: o,
-            onUpdate: n,
-          });
-          function n() {
-            c.innerText = l.score.toFixed(0);
-          }
-          s.add(p, "bar");
+            translateY: 0,
+            opacity: 1,
+            ease: "circ.out",
+          }),
+          "bar"
+        );
+        let p = u.to(l, {
+          duration: 1,
+          delay: 0.2 * i,
+          score: o,
+          onUpdate: n,
         });
-        this.allGuangquan.map((e, i) => {
+        function n() {
+          c.innerText = l.score.toFixed(0);
+        }
+        s.add(p, "bar");
+      });
+      this.allGuangquan.map((e, i) => {
+        s.add(
+          u.to(e.children[0].scale, {
+            duration: 1,
+            delay: 0.1 * i,
+            x: 1,
+            y: 1,
+            z: 1,
+            ease: "circ.out",
+          }),
+          "bar"
+        ),
           s.add(
-            u.to(e.children[0].scale, {
+            u.to(e.children[1].scale, {
               duration: 1,
               delay: 0.1 * i,
               x: 1,
@@ -256,20 +267,9 @@ export class Be extends M {
               ease: "circ.out",
             }),
             "bar"
-          ),
-            s.add(
-              u.to(e.children[1].scale, {
-                duration: 1,
-                delay: 0.1 * i,
-                x: 1,
-                y: 1,
-                z: 1,
-                ease: "circ.out",
-              }),
-              "bar"
-            );
-        });
-      }));
+          );
+      });
+    });
   }
   initEnvironment() {
     let t = new AmbientLight(16777215, 5);

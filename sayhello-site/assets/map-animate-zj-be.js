@@ -303,15 +303,15 @@ export class ZheJiangMap extends M {
       x: -9,
       y: 3,
       z: -3,
-    }),
-      this.createPointLight({
-        color: "#1d5e5e",
-        intensity: 100,
-        distance: 1e4,
-        x: 0,
-        y: 2,
-        z: 5,
-      });
+    });
+    this.createPointLight({
+      color: "#1d5e5e",
+      intensity: 100,
+      distance: 1e4,
+      x: 0,
+      y: 2,
+      z: 5,
+    });
   }
   createPointLight(t) {
     const a = new PointLight(1924702, t.intensity, t.distance, 1);
@@ -319,19 +319,19 @@ export class ZheJiangMap extends M {
       const s = new PointLightHelper(a, 1);
       this.scene.add(s);
       const e = this.debug.instance.addFolder("Point" + Math.random());
-      e.addColor(t, "color"),
-        e.add(t, "intensity", 1, 2e4, 10),
-        e.add(t, "distance", 100, 1e5, 10),
-        e.add(t, "x", -30, 30, 1),
-        e.add(t, "y", -30, 30, 1),
-        e.add(t, "z", -30, 30, 1),
-        e.onChange(({ object: i }) => {
-          (a.color = new Color(i.color)),
-            (a.distance = i.distance),
-            (a.intensity = i.intensity),
-            a.position.set(i.x, i.y, i.z),
-            s.update();
-        });
+      e.addColor(t, "color");
+      e.add(t, "intensity", 1, 2e4, 10);
+      e.add(t, "distance", 100, 1e5, 10);
+      e.add(t, "x", -30, 30, 1);
+      e.add(t, "y", -30, 30, 1);
+      e.add(t, "z", -30, 30, 1);
+      e.onChange(({ object: i }) => {
+        a.color = new Color(i.color);
+        a.distance = i.distance;
+        a.intensity = i.intensity;
+        a.position.set(i.x, i.y, i.z);
+        s.update();
+      });
     }
   }
   initSetting() {

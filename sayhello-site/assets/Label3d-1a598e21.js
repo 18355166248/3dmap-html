@@ -1,4 +1,11 @@
-import { V as z, O as W, y as O, ah as _ } from "./OrbitControls-9c9ee6bc.js";
+// import { V as z, O as W, y as O, ah as _ } from "./OrbitControls-9c9ee6bc.js";
+import {
+  Vector3 as z,
+  Quaternion as _,
+  Object3D as W,
+  Matrix4 as O,
+} from "./three.module.js";
+
 import "./index-1453e2ee.js";
 import { u as N } from "./utils-9af1928d.js";
 const D = new z(),

@@ -1,5 +1,6 @@
-import { V as f, ai as u } from "./OrbitControls-9c9ee6bc.js";
+import { Vector3, Box3 } from "./three.module.js";
 import "./index-1453e2ee.js";
+
 const m = function (e, i) {
     return Object.prototype.toString.call(i) === `[object ${e}]`;
   },
@@ -24,12 +25,12 @@ function p(e = 10, i = 62) {
   return t.join("");
 }
 function v(e) {
-  var i = new f(),
-    n = new u();
+  var i = new Vector3(),
+    n = new Box3();
   n.expandByObject(e);
-  var t = new f();
+  var t = new Vector3();
   n.getSize(t);
-  var o = new f();
+  var o = new Vector3();
   n.getCenter(o);
   let r = { box3: n, boxSize: t, center: o };
   if (e.geometry) {

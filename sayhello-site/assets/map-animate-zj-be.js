@@ -31,7 +31,7 @@ import {
   Points,
   Texture,
 } from "./three.module.js";
-import { M } from "./index-1453e2ee.js";
+import { M as MapApplication } from "./index-1453e2ee.js";
 import { g as ue, m as fe, a as me } from "./utils-9af1928d.js";
 import { D as ge } from "./index-4ec0cc76.js";
 import { G as ve } from "./Grid-77f5dd1e.js";
@@ -57,7 +57,7 @@ function F(_) {
   return _.sort((t, a) => a.value - t.value), _;
 }
 
-export class ZheJiangMap extends M {
+export class ZheJiangMap extends MapApplication {
   constructor(dom, options) {
     super(dom, options);
     this.pointCenter = [120.109913, 29.181466];
@@ -74,6 +74,7 @@ export class ZheJiangMap extends M {
     this.camera.instance.near = 1;
     this.camera.instance.far = 1e4;
     this.camera.instance.updateProjectionMatrix();
+    // three.interactive
     this.interactionManager = new Le(
       this.renderer.instance,
       this.camera.instance,
@@ -335,7 +336,7 @@ export class ZheJiangMap extends M {
     }
   }
   initSetting() {
-    this.debug = new ge(!1);
+    this.debug = new ge(true);
     this.renderer.instance.shadowMap.enabled = !1;
     this.renderer.resize();
   }

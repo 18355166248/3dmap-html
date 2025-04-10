@@ -340,16 +340,16 @@ class ye {
     return w().center(this.config.center).scale(120).translate([0, 0])(e);
   }
   create(e) {
-    const { type: a, visibelProvince: r } = this.config;
-    let t = e.features,
-      n = new x();
+    const { type, visibelProvince } = this.config;
+    let t = e.features;
+    const n = new x();
     for (let i = 0; i < t.length; i++) {
       const u = t[i];
-      u.properties.name !== r &&
+      u.properties.name !== visibelProvince &&
         u.geometry.coordinates.forEach((m) => {
           const d = [];
           let s = null;
-          a === "Line2"
+          type === "Line2"
             ? (m[0].forEach((h) => {
                 const [c, o] = this.geoProjection(h);
                 d.push(c, -o, 0);
@@ -374,11 +374,13 @@ class ye {
     );
   }
   createLine(e) {
-    const { material: a, renderOrder: r, type: t } = this.config,
+    const { material, renderOrder, type } = this.config,
       n = new z();
     n.setFromPoints(e);
-    let i = new k(n, a);
-    return (i.renderOrder = r), (i.name = "mapLine"), i;
+    let i = new k(n, material);
+    i.renderOrder = renderOrder;
+    i.name = "mapLine";
+    return i;
   }
   setParent(e) {
     e.add(this.lineGroup);

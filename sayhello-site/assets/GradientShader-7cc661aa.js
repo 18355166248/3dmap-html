@@ -5,6 +5,7 @@ import {
   b as f,
   C as n,
 } from "./OrbitControls-9c9ee6bc.js";
+
 class c {
   constructor({ time: o }, e) {
     (this.time = o),

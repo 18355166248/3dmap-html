@@ -40,7 +40,7 @@ import { G as N, P as V } from "./GradientShader-7cc661aa.js";
 import { P as U } from "./Particles-a008e8a7.js";
 import { g as u } from "./index-4db78ffb.js";
 import {
-  A as be,
+  A,
   B as H,
   L as T,
   E as we,
@@ -88,7 +88,7 @@ export class ZheJiangMap extends MapApplication {
     this.defaultLightMaterial = null;
     this.scene.add(this.labelGroup);
     this.initSetting();
-    this.assets = new be(() => {
+    this.assets = new A(() => {
       this.initEnvironment();
       this.createFloor();
       this.createChinaBlurLine();
@@ -343,14 +343,14 @@ export class ZheJiangMap extends MapApplication {
   createModel() {
     let t = new Group();
     this.focusMapGroup = new Group();
-    let { china: a, chinaTopLine: s, chinaBottomLine: e } = this.createChina(),
-      { zhejiang: i, zhejiangTop: r, guangdonLine: c } = this.createProvince();
-    a.setParent(t);
-    s.setParent(t);
-    console.log(ue(i.mapGroup));
-    i.setParent(this.focusMapGroup);
-    r.setParent(this.focusMapGroup);
-    c.setParent(this.focusMapGroup);
+    let { china, chinaTopLine, chinaBottomLine } = this.createChina();
+    let { zhejiang, zhejiangTop, guangdonLine } = this.createProvince();
+    china.setParent(t);
+    chinaTopLine.setParent(t);
+    chinaBottomLine.setParent(t);
+    zhejiang.setParent(this.focusMapGroup);
+    zhejiangTop.setParent(this.focusMapGroup);
+    guangdonLine.setParent(this.focusMapGroup);
     this.focusMapGroup.position.set(0, 0, -0.01);
     this.focusMapGroup.scale.set(1, 1, 0);
     t.add(this.focusMapGroup);
@@ -372,14 +372,14 @@ export class ZheJiangMap extends MapApplication {
         }),
         renderOrder: 2,
       }),
-      s = new T(this, {
+      chinaTopLine = new T(this, {
         center: this.pointCenter,
         visibelProvince: "广东省",
         data: t,
         material: new LineBasicMaterial({ color: 4162253 }),
         renderOrder: 3,
       });
-    s.lineGroup.position.z += 0.01;
+    chinaTopLine.lineGroup.position.z += 0.01;
     let e = new T(this, {
       center: this.pointCenter,
       data: t,
@@ -392,7 +392,7 @@ export class ZheJiangMap extends MapApplication {
     });
     return (
       (e.lineGroup.position.z -= 0.59),
-      { china: a, chinaTopLine: s, chinaBottomLine: e }
+      { china: a, chinaTopLine, chinaBottomLine: e }
     );
   }
   createProvince() {

@@ -79,7 +79,7 @@ class ge {
         {
           position: new G(0, 0, 0),
           center: new T(0, 0),
-          data: "",
+          data: "", 
           renderOrder: 1,
           topFaceMaterial: new v({
             color: 1582651,

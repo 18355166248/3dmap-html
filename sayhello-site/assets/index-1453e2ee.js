@@ -266,6 +266,13 @@ class ResourceManager extends EventEmitter {
       if (!this.loaders[loaderName]) {
         let loader = new LoaderClass(this.manager),
           typeName = loaderName;
+        console.log(
+          "loaderTypes[typeName]",
+          loaderName,
+          loaderTypes[typeName],
+          this.loaders
+        );
+
         loader instanceof xn &&
           (typeName === "GLTFLoader" && this.initDraco(loader),
           (this.loaders[loaderTypes[typeName]] = loader));

@@ -46,33 +46,27 @@ class H {
   }
   init() {
     let i = null,
-      {
-        material: e,
-        size: t,
-        diffuseColor: r,
-        diffuseSpeed: s,
-        diffuseWidth: l,
-        diffuseDir: f,
-      } = this.options,
-      a = t / s;
-    (e.onBeforeCompile = (o) => {
+      { material, size, diffuseColor, diffuseSpeed, diffuseWidth, diffuseDir } =
+        this.options,
+      a = size / diffuseSpeed;
+    (material.onBeforeCompile = (o) => {
       (i = o),
         (o.uniforms = {
           ...o.uniforms,
           uTime: { value: 0 },
-          uSpeed: { value: s },
-          uWidth: { value: l },
-          uColor: { value: new C(r) },
-          uDir: { value: f },
-        }),
-        (o.vertexShader = o.vertexShader.replace(
-          "void main() {",
-          `
+          uSpeed: { value: diffuseSpeed },
+          uWidth: { value: diffuseWidth },
+          uColor: { value: new C(diffuseColor) },
+          uDir: { value: diffuseDir },
+        });
+      (o.vertexShader = o.vertexShader.replace(
+        "void main() {",
+        `
             varying vec3 vPosition;
             void main(){
               vPosition = position;
           `
-        )),
+      )),
         (o.fragmentShader = o.fragmentShader.replace(
           "void main() {",
           `
@@ -136,9 +130,11 @@ class H {
       });
   }
 }
-class F {
+class Grid {
   constructor({ scene: i, time: e }, t) {
-    (this.scene = i), (this.time = e), (this.instance = null);
+    this.scene = i;
+    this.time = e;
+    this.instance = null;
     let r = {
       position: new D(0, 0, 0),
       gridSize: 100,
@@ -216,29 +212,23 @@ class F {
       }
     var u = new M();
     u.setAttribute("position", new T(o, 3));
-    let p = new B({ size: e, sizeAttenuation: !0, color: t, blending: r });
+    let p = new B({ size: e, sizeAttenuation: true, color: t, blending: r });
     const h = new L(u, p);
-    return l && this.diffuseShader(p), h;
+    l && this.diffuseShader(p);
+    return h;
   }
   setPointMode() {}
-  diffuseShader(i) {
-    let {
-      gridSize: e,
-      diffuseColor: t,
-      diffuseSpeed: r,
-      diffuseWidth: s,
-    } = this.options;
-    return (
-      new H({
-        material: i,
-        time: this.time,
-        size: e,
-        diffuseColor: t,
-        diffuseSpeed: r,
-        diffuseWidth: s,
-      }),
-      !1
-    );
+  diffuseShader(material) {
+    let { gridSize, diffuseColor, diffuseSpeed, diffuseWidth } = this.options;
+    new H({
+      material,
+      time: this.time,
+      size: gridSize,
+      diffuseColor,
+      diffuseSpeed,
+      diffuseWidth,
+    });
+    return !1;
   }
   createPlus(i = 50) {
     let e = i / 6 / 3,
@@ -262,4 +252,4 @@ class F {
     return new A(s, 24);
   }
 }
-export { F as G };
+export { Grid as G };

@@ -698,7 +698,10 @@ class MapApplication extends EventEmitter {
    * @param {number} deltaTime 时间增量
    */
   update(deltaTime) {
-    this.camera.update(deltaTime), this.renderer.update(deltaTime);
+    // console.log(this.camera?.instance?.position);
+
+    this.camera.update(deltaTime);
+    this.renderer.update(deltaTime);
   }
 
   /**

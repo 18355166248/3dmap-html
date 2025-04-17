@@ -575,42 +575,47 @@ export class ZheJiangMap extends MapApplication {
   }
   createEvent() {
     let t = [];
-    const a = (e) => {
-        e.traverse((i) => {
-          i.isMesh && (i.material = this.defaultMaterial);
-        });
-      },
-      s = (e) => {
-        e.traverse((i) => {
-          i.isMesh && (i.material = this.defaultLightMaterial);
-        });
-      };
+    // 默认材质
+    const defaultMaterial = (e) => {
+      e.traverse((i) => {
+        i.isMesh && (i.material = this.defaultMaterial);
+      });
+    };
+    // 高亮材质
+    const highlightMaterial = (e) => {
+      e.traverse((i) => {
+        i.isMesh && (i.material = this.defaultLightMaterial);
+      });
+    };
     this.eventElement.map((e) => {
-      this.interactionManager.add(e),
-        e.addEventListener("mousedown", (i) => {
-          if (this.clicked) return !1;
-          this.clicked = !0;
-          let r = new Vector3();
-          i.target.getWorldPosition(r),
-            console.log(r),
-            this.camera.instance.position.copy(r);
-        }),
-        e.addEventListener("mouseup", (i) => {
-          this.clicked = !1;
-        }),
-        e.addEventListener("mouseover", (i) => {
-          t.includes(i.target.parent) || t.push(i.target.parent),
-            (document.body.style.cursor = "pointer"),
-            s(i.target.parent);
-        }),
-        e.addEventListener("mouseout", (i) => {
-          (t = t.filter(
-            (r) => r.userData.name !== i.target.parent.userData.name
-          )),
-            t.length > 0 && t[t.length - 1],
-            a(i.target.parent),
-            (document.body.style.cursor = "default");
-        });
+      this.interactionManager.add(e);
+      // 点击
+      e.addEventListener("mousedown", (i) => {
+        if (this.clicked) return false;
+        this.clicked = true;
+        let r = new Vector3();
+        i.target.getWorldPosition(r);
+        // console.log(r);
+        // this.camera.instance.position.copy(r);
+      });
+      // 松开鼠标
+      e.addEventListener("mouseup", (i) => {
+        this.clicked = false;
+      });
+      // 鼠标悬停
+      console.log("🚀 ~ e.addEventListener ~ e:", e);
+      e.addEventListener("mouseover", (i) => {
+        t.includes(i.target.parent) || t.push(i.target.parent);
+        document.body.style.cursor = "pointer";
+        highlightMaterial(i.target.parent);
+      });
+      // 鼠标离开
+      e.addEventListener("mouseout", (i) => {
+        // t = t.filter((r) => r.userData.name !== i.target.parent.userData.name);
+        // t.length > 0 && t[t.length - 1];
+        defaultMaterial(i.target.parent);
+        document.body.style.cursor = "default";
+      });
     });
   }
   createBar() {
@@ -960,20 +965,20 @@ export class ZheJiangMap extends MapApplication {
       (this.rotateBorder2 = i.instance);
   }
   createFlyLine() {
-    (this.flyLineGroup = new Group()),
-      (this.flyLineGroup.visible = !1),
-      this.scene.add(this.flyLineGroup);
+    this.flyLineGroup = new Group();
+    this.flyLineGroup.visible = !1;
+    this.scene.add(this.flyLineGroup);
     const t = this.assets.instance.getResource("flyLine");
-    (t.colorSpace = SRGBColorSpace),
-      (t.wrapS = RepeatWrapping),
-      (t.wrapT = RepeatWrapping),
-      t.repeat.set(1, 1);
+    t.colorSpace = SRGBColorSpace;
+    t.wrapS = RepeatWrapping;
+    t.wrapT = RepeatWrapping;
+    t.repeat.set(1, 1);
     const a = 0.03,
       s = 32,
       e = 8,
       i = !1;
-    let [r, c] = this.geoProjection(this.flyLineCenter),
-      o = new Vector3(r, -c, 0);
+    let [r, c] = this.geoProjection(this.flyLineCenter);
+    const o = new Vector3(r, -c, 0);
     const l = new MeshBasicMaterial({
       map: t,
       alphaMap: t,
@@ -986,21 +991,21 @@ export class ZheJiangMap extends MapApplication {
     });
     this.time.on("tick", () => {
       t.offset.x -= 0.006;
-    }),
-      W.filter((p, n) => n < 7).map((p) => {
-        let [n, h] = this.geoProjection(p.centroid),
-          f = new Vector3(n, -h, 0);
-        const d = new Vector3();
-        d.addVectors(o, f).multiplyScalar(0.5), d.setZ(3);
-        const v = new QuadraticBezierCurve3(o, d, f),
-          m = new TubeGeometry(v, s, a, e, i),
-          g = new Mesh(m, l);
-        (g.rotation.x = -Math.PI / 2),
-          g.position.set(0, 0.94, 0),
-          (g.renderOrder = 21),
-          this.flyLineGroup.add(g);
-      }),
-      this.createFlyLineFocus();
+    });
+    W.filter((p, n) => n < 7).map((p) => {
+      let [n, h] = this.geoProjection(p.centroid);
+      const f = new Vector3(n, -h, 0);
+      const d = new Vector3();
+      d.addVectors(o, f).multiplyScalar(0.5), d.setZ(3);
+      const v = new QuadraticBezierCurve3(o, d, f),
+        m = new TubeGeometry(v, s, a, e, i),
+        g = new Mesh(m, l);
+      g.rotation.x = -Math.PI / 2;
+      g.position.set(0, 0.94, 0);
+      g.renderOrder = 21;
+      this.flyLineGroup.add(g);
+    });
+    this.createFlyLineFocus();
   }
   createFlyLineFocus() {
     (this.flyLineFocusGroup = new Group()),
